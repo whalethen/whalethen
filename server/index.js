@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const api = require('placesApi.js')
+const api = require('placesApi.js');
 
 const app = express();
 
