@@ -4,10 +4,10 @@
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Andy Nguyen
+  - Angie Huang
+  - Jackie Leung
+  - Jenn Shen
 
 ## Table of Contents
 
@@ -38,9 +38,7 @@
 From within the root directory:
 
 ```sh
-npm install -g bower
 npm install
-bower install
 ```
 
 ### Roadmap
