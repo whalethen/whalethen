@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
+<<<<<<< HEAD
 
+=======
+>>>>>>> fbae10a72ac36602377ada851688e58b1f0dc69a
 mongoose.connect('mongodb://localhost/fetcher');
 const db = mongoose.connection;
 
