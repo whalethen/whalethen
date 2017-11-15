@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 mongoose.connect('mongodb://localhost/fetcher');
 const db = mongoose.connection;
 
@@ -13,13 +14,14 @@ db.once('open', () => {
 const daySchema = mongoose.Schema({
   day: Number,
   id: Number,
-  events: {
-    eventName: {
-      name: String,
-      description: String,
-      votes: Number,
-    },
-  },
+  events: {},
+});
+
+const eventSchema = mongoose.Schema({
+  name: String,
+  type: String,
+  votes: Number,
 });
 
 const Day = mongoose.model('Day', daySchema);
+const Event = mongoose.model('Event', eventSchema);
