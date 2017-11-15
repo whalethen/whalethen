@@ -15,7 +15,7 @@ const getCoordinates = (location) => {
     params: { key: config.mapsApi },
     json: true,
   };
-  return request(options)
+  return request(options);
 };
 
 const formatPlaces = ({ results }) => {
