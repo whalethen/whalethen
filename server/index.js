@@ -12,6 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.options('/', (request, response) => response.json('GET,POST,PUT,GET'));
 
 app.get('/timeline/:timelineId', (request, response) => {
+  // get route with based on timeline id endpoint. Should
+  // allow for the access to the id tag via req.params as
+  // shown in the current response.
   response.send(request.params);
 });
 
