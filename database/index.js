@@ -1,29 +1,25 @@
 const mongoose = require('mongoose');
-<<<<<<< HEAD
+mongoose.Promise = require('bluebird');
+const options = { promiseLibrary: require('bluebird'), useMongoClient: true };
 
-=======
->>>>>>> fbae10a72ac36602377ada851688e58b1f0dc69a
-mongoose.connect('mongodb://localhost/fetcher');
+
 const db = mongoose.connection;
+mongoose.connect('mongodb://localhost/whaleThen', options);
 
-db.on('error', () => {
-  console.log('mongoose connection error');
-});
+db.on('error', () => console.log('mongoose connection error'));
 
-db.once('open', () => {
-  console.log('mongoose connected successfully');
-});
-
-const daySchema = mongoose.Schema({
-  day: Number,
-  id: Number,
-  events: {},
-});
+db.once('open', () => console.log('mongoose connected successfully'));
 
 const eventSchema = mongoose.Schema({
   name: String,
   type: String,
   votes: Number,
+});
+
+const daySchema = mongoose.Schema({
+  day: Number,
+  id: Number,
+  events: [eventSchema],
 });
 
 const Day = mongoose.model('Day', daySchema);
