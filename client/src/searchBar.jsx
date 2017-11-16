@@ -1,5 +1,4 @@
 import React from 'react';
- 
 
 const SearchBar = (props) => {
   return (
@@ -12,5 +11,6 @@ const SearchBar = (props) => {
 {/*SearchBar.propTypes = {
   props: React.PropTypes.object.isRequired
 };*/}
+
 
 export default SearchBar;
