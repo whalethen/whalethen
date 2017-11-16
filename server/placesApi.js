@@ -15,7 +15,7 @@ const getCoordinates = (location) => {
     params: { key: config.mapsApi },
     json: true,
   };
-  return request(options)
+  return request(options);
 };
 
 const formatPlaces = ({ results }) => {
@@ -28,14 +28,13 @@ const formatPlaces = ({ results }) => {
   });
 };
 
-const placesApi = (location, query, distance = 50, type = 'point_of_interest') => {
+const placesApi = (location, query, distance = 32000) => {
   const options = {
     url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
     method: 'GET',
     qs: {
       location,
       radius: distance,
-      type,
       keyword: query,
       key: config.mapsApi,
     },
@@ -67,6 +66,6 @@ module.exports.getCoordinates = getCoordinates;
 // .then(form => console.log(form))
 // .catch(err => console.error(err))
 
-// placesApi('mountain view', 'hiking', 50)
+// placesApi('mountain view', 'hiking')
 //   .then(result => console.log('success: ', result))
 //   .catch(err => console.error('fail: ', err));

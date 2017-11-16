@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBar from './searchBar.jsx';
+import SearchBar from './searchBar';
 import $ from '../../node_modules/jquery';
 
 class Search extends React.Component {
@@ -9,7 +9,7 @@ class Search extends React.Component {
       termBar: '',
       searchList: [],
     };
-    
+
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -49,4 +49,3 @@ class Search extends React.Component {
 }; */ }
 
 export default Search;
-
