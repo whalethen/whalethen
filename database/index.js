@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/whaleThen');
+const Promise = require('bluebird');
+mongoose.Promise = Promise;
+const options = { promiseLibrary: Promise, useMongoClient: true };
+
+mongoose.connect('mongodb://localhost/whaleThen', options);
 const db = mongoose.connection;
 
 db.on('error', () => {
