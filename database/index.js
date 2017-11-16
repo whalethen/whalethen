@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
-const options = { promiseLibrary: require('bluebird'), useMongoClient: true };
+const Promise = require('bluebird');
+mongoose.Promise = Promise;
+const options = { promiseLibrary: Promise, useMongoClient: true };
 
-
-const db = mongoose.connection;
 mongoose.connect('mongodb://localhost/whaleThen', options);
+const db = mongoose.connection;
 
-db.on('error', () => console.log('mongoose connection error'));
+db.on('error', () => {
+  console.log('mongoose connection error');
+});
 
-db.once('open', () => console.log('mongoose connected successfully'));
+db.once('open', () => {
+  console.log('mongoose connected successfully');
+});
 
 const eventSchema = mongoose.Schema({
   name: String,
