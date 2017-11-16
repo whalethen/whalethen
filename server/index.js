@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const api = require('placesApi.js');
+const api = require('./placesApi.js');
+const db = require('../database/');
 
 const app = express();
 
@@ -36,7 +37,7 @@ app.delete('/entry/:id', (request, response) => {
 
 app.get('/search', (request, response) => {
   // for triggering a search to the search api
-  api.placesApi(/* formated request body goes here */)
+  api.placesApi('chicago', 'food')
     .then(result => response.json(result))
     .catch(err => console.error(err));
 });
