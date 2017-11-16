@@ -1,9 +1,11 @@
 import React from 'react';
+import DayView from './day'
 
 const Timeline = (props) => {
   return (
-    <div>
-      <div>SOME STUFF</div>
+    <div className="Timeline">
+      <div className="timelineTitle">Timeline</div>
+      <DayView />
     </div>
   )
 }

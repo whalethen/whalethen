@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './searchBar';
 import $ from '../../node_modules/jquery';
+import propTypes from '../../node_modules/prop-types'
 
 class Search extends React.Component {
   constructor(props) {
@@ -35,8 +36,8 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Search Stuff</h1>
+      <div className="searchComponent">
+        <div className="searchTitle">Search Stuff</div>
         <SearchBar onSubmit={this.onSubmit} />
       </div>
     );
@@ -44,8 +45,8 @@ class Search extends React.Component {
 }
 
 
-{ /* Search.propTypes = {
-  SOMEDATA: React.PropTypes.object.isRequired,
-}; */ }
+// Search.propTypes = {
+//   SOMEDATA: React.PropTypes.object.isRequired,
+// };
 
 export default Search;

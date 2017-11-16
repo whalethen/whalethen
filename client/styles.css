@@ -1,0 +1,52 @@
+body {
+  /*background: grey;*/
+}
+
+.App {
+
+}
+
+.searchComponent {
+
+}
+.searchTitle {
+
+}
+
+.startDate {
+  padding: 5px;
+}
+
+.endDate {
+  padding: 5px;
+}
+
+.title {
+  font-size: 30pt;
+  font-weight: bold;
+}
+
+.timelineName {
+  padding: 5px;
+}
+
+.inputBox {
+  padding: 5px;
+}
+
+.timelineParams {
+  display: flex;
+}
+
+.searchContainer {
+  
+}
+
+.timelineContainer {
+
+}
+
+.columnsContainer {
+  display: flex;
+  flex-direction: row;
+}
