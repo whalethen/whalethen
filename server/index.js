@@ -36,9 +36,11 @@ app.delete('/entry/:id', (request, response) => {
 
 app.get('/search', (request, response) => {
   // for triggering a search to the search api
+
   api.placesApi(/* formated request body goes here */)
     .then(result => response.json(result))
     .catch(err => console.error(err));
+
 });
 
 

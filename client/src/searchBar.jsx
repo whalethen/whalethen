@@ -3,19 +3,14 @@ import React from 'react';
 const SearchBar = (props) => {
   return (
     <div>
-      <form>
-        <label>
-          Search:
-          <input type="text" name="name" />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <button onClick={props.onSubmit}>Search Things To Do</button>
     </div>
-  )
-}
-
-SearchBar.propTypes = {
-  term: React.PropTypes.string.isRequired
+  );
 };
+
+{/*SearchBar.propTypes = {
+  props: React.PropTypes.object.isRequired
+};*/}
+
 
 export default SearchBar;
