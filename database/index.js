@@ -1,8 +1,16 @@
 const mongoose = require('mongoose');
+<<<<<<< HEAD
 mongoose.Promise = require('bluebird');
 const options = { promiseLibrary: require('bluebird'), useMongoClient: true };
 
 
+=======
+const Promise = require('bluebird');
+mongoose.Promise = Promise;
+const options = { promiseLibrary: Promise, useMongoClient: true };
+
+mongoose.connect('mongodb://localhost/whaleThen', options);
+>>>>>>> (bug) add bluebird to db
 const db = mongoose.connection;
 mongoose.connect('mongodb://localhost/whaleThen', options);
 
