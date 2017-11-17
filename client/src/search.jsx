@@ -1,44 +1,46 @@
 import React from 'react';
 import SearchBar from './searchBar';
-import $ from 'jquery';
-import propTypes from 'prop-types';
+import SearchEntryList from './SearchEntryList'
+import axios from 'axios';
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      locationSearch: '',
       termBar: '',
       searchList: [],
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleCat = this.handleCat.bind(this);
+    this.handleLoc = this.handleLoc.bind(this);
   }
-
-
   onSubmit() {
-    console.log('hi button')
-    $.ajax({
-      method: 'GET',
-      data: {query: this.state.termBar},
-      url: '/search',
-      contentType: 'application/json',
-      success: (data) => {
-        console.log('get request data', data)
+    axios.get('/search', { category: this.state.termBar, location: this.state.locationSearch })
+      .then((response) => {
         this.setState({
-          searchList: data
-        })
-      },
-      error: (err) => {
-        console.log('error', err);
-      },
+          searchList: response,
+        });
+      })
+      .catch(err => console.error(err));
+  }
+  handleCat(e) {
+    this.setState({
+      termBar: e.target.value,
     });
   }
-
+  handleLoc(e) {
+    this.setState({
+      locationSearch: e.target.value,
+    });
+  }
   render() {
     return (
-      <div className="searchComponent">
-        <div className="searchTitle">Search Stuff</div>
-        <SearchBar onSubmit={this.onSubmit} />
+      <div>
+        <h1>Search Stuff</h1>
+        <SearchBar onSubmit={this.onSubmit} handleCat={this.handleCat} handleLoc={this.handleLoc} />
+        <SearchEntryList searchList={this.state.searchList} />
       </div>
     );
   }
