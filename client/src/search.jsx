@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchBar from './searchBar';
-import $ from '../../node_modules/jquery';
-import propTypes from '../../node_modules/prop-types'
+import $ from 'jquery';
+import propTypes from 'prop-types';
 
 class Search extends React.Component {
   constructor(props) {
@@ -46,7 +46,7 @@ class Search extends React.Component {
 
 
 // Search.propTypes = {
-//   SOMEDATA: React.PropTypes.object.isRequired,
+//   SOMEDATA: React.PropTypes.array.isRequired,
 // };
 
 export default Search;

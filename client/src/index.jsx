@@ -30,6 +30,12 @@ class App extends React.Component {
     this.countDays();
   }
 
+  onEnter(event) {
+    if (event.key === 'Enter') {
+      this.onSubmit();
+    }
+  }
+
   countDays() {
     if (this.state.startDate.includes('.') || this.state.endDate.includes('.')) {
       alert('Incorrect Date Format. Please format in XX/XX/XXXX');
@@ -56,6 +62,7 @@ class App extends React.Component {
               name="timelineName"
               onChange={event => this.onInputChange(event)}
               placeholder="enter a name"
+              onKeyUp={event => this.onEnter(event)}
             />
             </label>
           </div>
@@ -68,6 +75,7 @@ class App extends React.Component {
               name="startDate"
               onChange={event => this.onInputChange(event)}
               placeholder="enter a start date"
+              onKeyUp={event => this.onEnter(event)}
             />
             </label>
           </div>
@@ -80,10 +88,11 @@ class App extends React.Component {
               name="endDate"
               onChange={event => this.onInputChange(event)}
               placeholder="enter an end date"
+              onKeyUp={event => this.onEnter(event)}
             />
             </label>
           </div>
-          <button className="scheduleSubmit" onClick={() => this.onSubmit()}>
+          <button className="scheduleSubmit" onSubmit={event => this.onSubmit(event)}>
             Make New Schedule
           </button>
         </div>
@@ -92,7 +101,7 @@ class App extends React.Component {
             <Timeline />
           </div>
           <div className="SearchContainer">
-            <Search />
+            <Search data={this.state.data}/>
           </div>
         </div>
       </div>
