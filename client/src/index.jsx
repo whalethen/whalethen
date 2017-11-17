@@ -13,6 +13,7 @@ class App extends React.Component {
       timelineName: '',
       startDate: '',
       endDate: '',
+      numberOfDays: 0,
     };
   }
   componentDidMount() {
@@ -23,6 +24,22 @@ class App extends React.Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+  }
+
+  onSubmit() {
+    this.countDays();
+  }
+
+  countDays() {
+    if (this.state.startDate.includes('.') || this.state.endDate.includes('.')) {
+      alert('Incorrect Date Format. Please format in XX/XX/XXXX');
+    }
+    const splitVariable = this.state.startDate.includes('-') ? '-' : '/';
+    const start = this.state.startDate.split(splitVariable);
+    const end = this.state.endDate.split(splitVariable);
+    const numberOfDays = ((end[0] - start[0]) * 10) + (end[1] - start[1]);
+
+    this.setState({ numberOfDays });
   }
 
   render() {
@@ -66,6 +83,9 @@ class App extends React.Component {
             />
             </label>
           </div>
+          <button className="scheduleSubmit" onClick={() => this.onSubmit()}>
+            Make New Schedule
+          </button>
         </div>
         <div className="columnsContainer">
           <div className="TimelineContainer">
