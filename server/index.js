@@ -8,8 +8,8 @@ const app = express();
 
 app.use(express.static(`${__dirname}/../client/`));
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 app.options('/', (request, response) => response.json('GET,POST,PUT,GET'));
 
@@ -36,8 +36,9 @@ app.delete('/entry/:id', (request, response) => {
 });
 
 app.get('/search', (request, response) => {
+  const { category, location } = request.query;
   // for triggering a search to the search api
-  api.placesApi('chicago', 'food')
+  api.placesApi(location, category)
     .then(result => response.json(result))
     .catch(err => console.error(err));
 });

@@ -9,5 +9,8 @@ const SearchList = props => (
   </div>
 );
 
+{/*SearchBar.propTypes = {
+ props: React.PropTypes.object.isRequired
+};*/}
 
 export default SearchList;
