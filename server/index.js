@@ -9,7 +9,7 @@ const app = express();
 app.use(express.static(`${__dirname}/../client/`));
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.options('/', (request, response) => response.json('GET,POST,PUT,GET'));
 
@@ -35,7 +35,8 @@ app.delete('/entry/:id', (request, response) => {
   response.send('for removing an entry from the day model');
 });
 
-app.get('/search', (request, response) => {
+app.post('/search', (request, response) => {
+  console.log(request.body)
   // for triggering a search to the search api
   api.placesApi('chicago', 'food')
     .then(result => response.json(result))
