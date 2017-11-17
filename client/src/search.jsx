@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './searchBar';
-import $ from '../../node_modules/jquery';
+// import $ from '../../node_modules/jquery';
+import axios from 'axios';
 
 class Search extends React.Component {
   constructor(props) {
@@ -15,22 +16,9 @@ class Search extends React.Component {
 
 
   onSubmit() {
-    console.log('hi button')
-    $.ajax({
-      method: 'GET',
-      data: {query: this.state.termBar},
-      url: '/search',
-      contentType: 'application/json',
-      success: (data) => {
-        console.log('get request data', data)
-        this.setState({
-          searchList: data
-        })
-      },
-      error: (err) => {
-        console.log('error', err);
-      },
-    });
+    axios.post('/search', { query: this.state.termBar })
+      .then(response => this.setState({ searchList: response }))
+      .catch(err => console.error(err));
   }
 
   render() {
