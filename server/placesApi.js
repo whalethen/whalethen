@@ -69,3 +69,6 @@ module.exports.getCoordinates = getCoordinates;
 // placesApi('mountain view', 'hiking')
 //   .then(result => console.log('success: ', result))
 //   .catch(err => console.error('fail: ', err));
+
+
+
