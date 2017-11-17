@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Search from './search';
 import Timeline from './timeline';
+import TimelineInputBox from './timelineInputBox';
+import StartDateBox from './startDateBox';
+import EndDateBox from './endDateBox';
 import axios from '../../node_modules/axios';
 
 
@@ -15,6 +18,9 @@ class App extends React.Component {
       endDate: '',
       numberOfDays: 0,
     };
+
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onEnter = this.onEnter.bind(this);
   }
   componentDidMount() {
     // on init function to make get request to server
@@ -53,45 +59,18 @@ class App extends React.Component {
       <div className="App">
         <div className="title">WhaleThen</div>
         <div className="timelineParams">
-          <div className="inputBox">
-            <label className="timelineName" htmlFor="timelineName">
-            Timeline Name:
-            <input
-              id="timelineName"
-              type="text"
-              name="timelineName"
-              onChange={event => this.onInputChange(event)}
-              placeholder="enter a name"
-              onKeyUp={event => this.onEnter(event)}
-            />
-            </label>
-          </div>
-          <div className="inputBox">
-            <label className="startDate" htmlFor="startDate">
-            Start Date:
-            <input
-              id="startDate"
-              type="text"
-              name="startDate"
-              onChange={event => this.onInputChange(event)}
-              placeholder="enter a start date"
-              onKeyUp={event => this.onEnter(event)}
-            />
-            </label>
-          </div>
-          <div className="inputBox">
-            <label className="endDate" htmlFor="endDate">
-            End Date:
-            <input
-              id="endDate"
-              type="text"
-              name="endDate"
-              onChange={event => this.onInputChange(event)}
-              placeholder="enter an end date"
-              onKeyUp={event => this.onEnter(event)}
-            />
-            </label>
-          </div>
+          <TimelineInputBox
+            onInput={this.onInputChange}
+            onEnter={this.onEnter}
+          />
+          <StartDateBox
+            onInput={this.onInputChange}
+            onEnter={this.onEnter}
+          />
+          <EndDateBox
+            onInput={this.onInputChange}
+            onEnter={this.onEnter}
+          />
           <button className="scheduleSubmit" onSubmit={event => this.onSubmit(event)}>
             Make New Schedule
           </button>

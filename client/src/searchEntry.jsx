@@ -12,4 +12,4 @@ const SearchEntry = (props) => {
  props: React.PropTypes.object.isRequired
 };*/}
 
-export default SearchBar;
+export default SearchEntry;
