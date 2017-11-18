@@ -2,9 +2,9 @@ import React from 'react';
 
 const SearchBar = (props) => {
   return (
-    <div>
+    <div className="searchBar">
       <input></input>
-      <button onClick={props.onSubmit}>Search Things To Do</button>
+      <button className="searchSubmit" onClick={props.onSubmit}>Search Things To Do</button>
     </div>
   );
 };

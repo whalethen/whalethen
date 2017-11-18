@@ -1,16 +1,22 @@
 import React from 'react';
-import 
+// import
 
 const Day = (props) => {
   return (
-    <div>
-      <div>SOME STUFF</div>
+    <div className="dayView">
+      <div className="dayTitle">Day X</div>
+      <div className="events">
+        <div> some event here </div>
+        <div> some event here </div>
+        <div> some event here </div>
+        <div> some event here </div>
+      </div>
     </div>
-  )
-}
-
-Day.propTypes = {
-  SOMEDATA: React.PropTypes.object.isRequired
+  );
 };
+
+// Day.propTypes = {
+//   SOMEDATA: React.PropTypes.object.isRequired
+// };
 
 export default Day;

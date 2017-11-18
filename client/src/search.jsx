@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchBar from './searchBar';
-import SearchEntryList from './SearchEntryList'
 import axios from 'axios';
+import SearchBar from './searchBar';
+import SearchEntryList from './SearchEntryList';
 
 class Search extends React.Component {
   constructor(props) {
@@ -37,8 +37,8 @@ class Search extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h1>Search Stuff</h1>
+      <div className="searchContainer">
+        <div className="searchTitle">Search Stuff</div>
         <SearchBar onSubmit={this.onSubmit} handleCat={this.handleCat} handleLoc={this.handleLoc} />
         <SearchEntryList searchList={this.state.searchList} />
       </div>
@@ -47,8 +47,8 @@ class Search extends React.Component {
 }
 
 
-{ /* Search.propTypes = {
-  SOMEDATA: React.PropTypes.object.isRequired,
-}; */ }
+// Search.propTypes = {
+//   SOMEDATA: React.PropTypes.array.isRequired,
+// };
 
 export default Search;
