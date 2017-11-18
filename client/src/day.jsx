@@ -3,11 +3,17 @@ import React from 'react';
 
 const Day = (props) => {
   return (
-    <div>
-      <div>Day view</div>
+    <div className="dayView">
+      <div className="dayTitle">Day X</div>
+      <div className="events">
+        <div> some event here </div>
+        <div> some event here </div>
+        <div> some event here </div>
+        <div> some event here </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 // Day.propTypes = {
 //   SOMEDATA: React.PropTypes.object.isRequired
