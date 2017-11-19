@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import SearchBar from './searchBar';
-import SearchList from './searchList';
+import SearchBar from './SearchBar';
+import SearchList from './SearchList';
 import Data from '../../sampleData';
 
 class Search extends React.Component {

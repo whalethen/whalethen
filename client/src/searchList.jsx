@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import SearchListEntry from './searchListEntry';
+import SearchEntry from './SearchEntry';
 
 
 const SearchList = ({ searchList, numberOfDays }) => (

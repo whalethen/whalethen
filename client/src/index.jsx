@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from '../../node_modules/axios';
-import Search from './search';
-import Timeline from './timeline';
-import TimelineInputBox from './timelineInputBox';
-import StartDateBox from './startDateBox';
-import EndDateBox from './endDateBox';
+import axios from 'axios';
+import Search from './Search';
+import Timeline from './Timeline';
+import TimelineInputBox from './TimelineInputBox';
+import StartDateBox from './StartDateBox';
+import EndDateBox from './EndDateBox';
 
 
 class App extends React.Component {
