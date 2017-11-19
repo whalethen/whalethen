@@ -1,5 +1,5 @@
 import React from 'react';
-import Event from './events';
+import Event from './Events';
 
 const Day = (props) => {
   return (

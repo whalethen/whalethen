@@ -1,5 +1,5 @@
 import React from 'react';
-import DayView from './day'
+import DayView from './Day'
 
 const Timeline = props => (
   <div className="container timeline">
