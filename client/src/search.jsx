@@ -37,7 +37,7 @@ class Search extends React.Component {
   }
   render() {
     return (
-      <div className="searchContainer">
+      <div className="container search">
         <div className="searchTitle">Search Stuff</div>
         <SearchBar onSubmit={this.onSubmit} handleCat={this.handleCat} handleLoc={this.handleLoc} />
         <SearchEntryList searchList={this.state.searchList} />

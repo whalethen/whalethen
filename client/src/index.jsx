@@ -66,7 +66,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="timelineParams">
+        <div className="container timelineParams">
           <div className="title">WhaleThen</div>
           <TimelineInputBox
             onInput={this.onInputChange}

@@ -1,14 +1,21 @@
 body {
+  margin: 0 auto;
+  box-sizing: border-box;
   /*background: grey;*/
 }
 
 .App {
   display: grid;
   grid-template-columns: 4fr 1fr;
-  grid-template-rows: 0.5fr 5fr;
+  grid-template-rows: 0.20fr 5fr;
   grid-template-areas:
   "navbar search"
   "timeline search";
+}
+
+.container {
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .dayContainer {
@@ -17,6 +24,7 @@ body {
 
 .dayView {
   padding: 5px;
+  width: 25%;
 }
 
 .searchComponent {
@@ -44,26 +52,33 @@ body {
 }
 
 .inputBox {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
   padding: 5px;
 }
 
 .timelineParams {
   display: flex;
   grid-area: navbar;
+  justify-content: space-around;
 }
 
-.searchContainer {
+.timelineParams button {
+  background: white;
+  border-radius: 2px;
+  height: 33%;
+  align-self: center;
+}
+
+.search {
   display: flex;
   grid-area: search;
 }
 
-.timelineContainer {
+.timeline {
   grid-area: timeline;
-}
-
-.columnsContainer {
-  display: flex;
-  flex-direction: row;
+  height: 85vh;
 }
 
 .event {

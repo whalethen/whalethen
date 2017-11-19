@@ -7,6 +7,10 @@ const Day = (props) => {
       <div className="dayTitle">Day X</div>
       <div className="events">
         <Event event={props} />
+        <Event event={props} />
+        <Event event={props} />
+        <Event event={props} />
+        <Event event={props} />
       </div>
     </div>
   );
