@@ -36,7 +36,6 @@ body {
 }
 
 .searchBar {
-  /*grid-area: searchbar;*/
   margin-bottom: 20px;
 }
 
@@ -45,7 +44,6 @@ body {
   grid-area: search;
   align-content: stretch;
   flex-direction: column;
-  /*overflow: auto;*/
 }
 
 .scrollbox {

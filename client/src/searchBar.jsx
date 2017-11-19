@@ -3,8 +3,8 @@ import React from 'react';
 const SearchBar = (props) => {
   return (
     <div className="searchBar">
-      <input></input>
-      <button className="searchSubmit" onClick={props.onSubmit}>Search Things To Do</button>
+      <input />
+      <button className="searchSubmit" onClick={props.onSubmit}>Search</button>
     </div>
   );
 };
