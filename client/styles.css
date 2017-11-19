@@ -24,6 +24,7 @@ body {
 .dayView {
   padding: 5px;
   width: 200px;
+  border: 1px solid black;
 }
 
 .searchComponent {}
@@ -44,6 +45,15 @@ body {
   grid-area: search;
   align-content: stretch;
   flex-direction: column;
+}
+
+.searchSubmit {
+  padding-left: 1px;
+}
+
+.searchEntry {
+  padding: 5px;
+  border: 1px solid black;
 }
 
 .scrollbox {
@@ -76,6 +86,11 @@ body {
   align-items: flex-end;
   justify-content: space-around;
   padding: 5px;
+}
+
+input {
+  border-radius: 5px;
+  padding-left: 5px;
 }
 
 .timelineParams {
