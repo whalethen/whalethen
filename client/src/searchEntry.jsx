@@ -1,10 +1,10 @@
 import React from 'react';
 
 const SearchEntry = (props) => {
- return (
-   <div>
-     <li>{ props.entry.name }</li>
-   </div>
+  return (
+    <div>
+      <li>{ props.entry.name }</li>
+    </div>
  );
 };
 

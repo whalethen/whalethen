@@ -3,7 +3,12 @@ body {
 }
 
 .App {
-
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 0.5fr 5fr;
+  grid-template-areas:
+  "navbar search"
+  "timeline search";
 }
 
 .dayContainer {
@@ -44,14 +49,16 @@ body {
 
 .timelineParams {
   display: flex;
+  grid-area: navbar;
 }
 
 .searchContainer {
   display: flex;
+  grid-area: search;
 }
 
 .timelineContainer {
-
+  grid-area: timeline;
 }
 
 .columnsContainer {

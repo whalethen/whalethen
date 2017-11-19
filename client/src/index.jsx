@@ -66,8 +66,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="title">WhaleThen</div>
         <div className="timelineParams">
+          <div className="title">WhaleThen</div>
           <TimelineInputBox
             onInput={this.onInputChange}
             onEnter={this.onEnter}
@@ -84,14 +84,8 @@ class App extends React.Component {
             Make New Schedule
           </button>
         </div>
-        <div className="columnsContainer">
-          <div className="TimelineContainer">
-            <Timeline />
-          </div>
-          <div className="SearchContainer">
-            <Search data={this.state.data}/>
-          </div>
-        </div>
+        <Timeline />
+        <Search data={this.state.data} />
       </div>
     );
   }

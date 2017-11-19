@@ -4,7 +4,7 @@ import DayView from './day'
 const Timeline = (props) => {
 
   return (
-    <div className="Timeline">
+    <div className="timelineContainer">
       <div className="timelineTitle">Timeline</div>
       <div className="dayContainer">
         <DayView />
