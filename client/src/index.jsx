@@ -17,6 +17,7 @@ class App extends React.Component {
       startDate: '',
       endDate: '',
       numberOfDays: 0,
+      timelineId: '',
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -40,6 +41,14 @@ class App extends React.Component {
     if (event.key === 'Enter') {
       this.onSubmit();
     }
+  }
+
+  addNewEvent(event) {
+    // input: event => {name, type}
+    axios.post('/entry', event)
+      .then(() => axios.get(`/timeline/${this.state.timelineId}`))
+      .then(response => this.setState({ data: response }))
+      .catch(err => console.error(err));
   }
 
   countDays() {

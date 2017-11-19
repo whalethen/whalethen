@@ -7,10 +7,7 @@ const Timeline = (props) => {
     <div className="Timeline">
       <div className="timelineTitle">Timeline</div>
       <div className="dayContainer">
-        {<DayView />}
-        {<DayView />}
-        {<DayView />}
-        {<DayView />}
+        <DayView />
       </div>
     </div>
   )

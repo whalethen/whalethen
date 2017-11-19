@@ -47,7 +47,7 @@ body {
 }
 
 .searchContainer {
-
+  display: flex;
 }
 
 .timelineContainer {
@@ -57,4 +57,8 @@ body {
 .columnsContainer {
   display: flex;
   flex-direction: row;
+}
+
+.event {
+  margin: 5px;
 }
