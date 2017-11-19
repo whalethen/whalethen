@@ -16,7 +16,7 @@ class App extends React.Component {
       timelineName: '',
       startDate: '',
       endDate: '',
-      numberOfDays: 0,
+      numberOfDays: 4,
       timelineId: '',
     };
 
@@ -85,7 +85,7 @@ class App extends React.Component {
           </button>
         </div>
         <Timeline />
-        <Search data={this.state.data} />
+        <Search data={this.state.data} numberOfDays={this.state.numberOfDays} />
       </div>
     );
   }

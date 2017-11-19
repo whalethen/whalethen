@@ -5,8 +5,12 @@ const Timeline = (props) => {
 
   return (
     <div className="container timeline">
-      <div className="timelineTitle">Timeline</div>
-      <div className="dayContainer">
+      {/* <div className="timelineTitle">Timeline</div> */}
+      <div className="container day">
+        <DayView />
+        <DayView />
+        <DayView />
+        <DayView />
         <DayView />
         <DayView />
         <DayView />

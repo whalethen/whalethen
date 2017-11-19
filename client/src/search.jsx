@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import SearchBar from './searchBar';
-import SearchEntryList from './SearchEntryList';
+import SearchList from './searchList';
+import Data from '../../sampleData';
 
 class Search extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class Search extends React.Component {
     this.state = {
       locationSearch: '',
       termBar: '',
-      searchList: [],
+      searchList: Data.sampleData,
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -38,9 +39,10 @@ class Search extends React.Component {
   render() {
     return (
       <div className="container search">
-        <div className="searchTitle">Search Stuff</div>
         <SearchBar onSubmit={this.onSubmit} handleCat={this.handleCat} handleLoc={this.handleLoc} />
-        <SearchEntryList searchList={this.state.searchList} />
+        <div className="scrollbox">
+          <SearchList searchList={this.state.searchList} />
+        </div>
       </div>
     );
   }
