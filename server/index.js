@@ -17,12 +17,19 @@ app.get('/timeline/:timelineId', (request, response) => {
   // get route with based on timeline id endpoint. Should
   // allow for the access to the id tag via req.params as
   // shown in the current response
-  response.send(request.params);
+  db.getTimelineById(request.params.timelineId)
+    .then(timeline => response.json(timeline))
+    .catch(err => console.error('error: ', err));
 });
 
-app.post('/entry', (request, response) => {
+app.post('/entry', ({ body }, response) => {
+  console.log(body)
   // for adding an extry to a day model
-  response.send('for adding an extry to a day model');
+  db.addNewEvent(body.event, body.timelineId, body.day)
+  .tap(() => console.log(body))
+    .then(() => response.status(200))
+    .catch(() => response.status(409))
+  // response.send(body.event)
 });
 
 app.put('/entry', (request, response) => {
