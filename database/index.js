@@ -38,9 +38,8 @@ const addNewTimeline = (timelineId, numberOfDays) => {
     const newDay = new Day({ day, timelineId });
     timeline.push(newDay);
   }
-
   return Promise.map(timeline, day => day.save());
-}
+};
 
 const getTimelineById = timelineId => Day.findAsync({ timelineId });
 
@@ -60,7 +59,3 @@ module.exports.getTimelineById = getTimelineById;
 module.exports.addNewTimeline = addNewTimeline;
 module.exports.addNewEvent = addNewEvent;
 module.exports.addEventToDay = addEventToDay;
-
-//
-// addNewTimeline(1234, 5)
-// .then(() => addNewEvent({ name: 'test2', address: '1234 test 2 st' }, 1234, 3))
