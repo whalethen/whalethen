@@ -1,16 +1,13 @@
 import React from 'react';
 import Event from './Events';
+import _ from 'lodash';
 
-const Day = (props) => {
+const Day = ({ day }) => {
   return (
     <div className="dayView">
       <div className="dayTitle">Day X</div>
       <div className="events">
-        <Event event={props} />
-        <Event event={props} />
-        <Event event={props} />
-        <Event event={props} />
-        <Event event={props} />
+        {_.map(day, (event, index) => <Event event={event} key={index} />)}
       </div>
     </div>
   );
