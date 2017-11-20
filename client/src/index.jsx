@@ -13,11 +13,11 @@ class App extends React.Component {
     super();
     this.state = {
       timelineData: [],
-      timelineName: 'test',
+      timelineName: 'test', // temp until we get some more data built up
       startDate: '',
       endDate: '',
       numberOfDays: 4,
-      timelineId: 1234,
+      timelineId: 1234, // temp until we get a way to produce these
     };
 
     this.onInputChange = this.onInputChange.bind(this);
