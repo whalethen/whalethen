@@ -1,10 +1,12 @@
 import React from 'react';
-import SearchListEntry from './searchListEntry.jsx';
+import _ from 'lodash';
+import SearchEntry from './SearchEntry';
 
-const SearchList = props => (
-  <div>
-    {props.events.map((event, index) => (
-      <SearchListEntry days={props.days} key={index} event={event} />
+
+const SearchList = ({ searchList, numberOfDays }) => (
+  <div className="searchList">
+    {_.map(searchList, (event, index) => (
+      <SearchEntry days={numberOfDays} key={index} event={event} />
       ))}
   </div>
 );

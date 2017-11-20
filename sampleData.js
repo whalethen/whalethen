@@ -1,74 +1,83 @@
-module.exports.sampleLocation = {
-    "results": [
-        {
-            "address_components": [
-                {
-                    "long_name": "Mountain View",
-                    "short_name": "Mountain View",
-                    "types": [
-                        "locality",
-                        "political"
-                    ]
-                },
-                {
-                    "long_name": "Santa Clara County",
-                    "short_name": "Santa Clara County",
-                    "types": [
-                        "administrative_area_level_2",
-                        "political"
-                    ]
-                },
-                {
-                    "long_name": "California",
-                    "short_name": "CA",
-                    "types": [
-                        "administrative_area_level_1",
-                        "political"
-                    ]
-                },
-                {
-                    "long_name": "United States",
-                    "short_name": "US",
-                    "types": [
-                        "country",
-                        "political"
-                    ]
-                }
-            ],
-            "formatted_address": "Mountain View, CA, USA",
-            "geometry": {
-                "bounds": {
-                    "northeast": {
-                        "lat": 37.469887,
-                        "lng": -122.0446721
-                    },
-                    "southwest": {
-                        "lat": 37.3567599,
-                        "lng": -122.1178619
-                    }
-                },
-                "location": {
-                    "lat": 37.3860517,
-                    "lng": -122.0838511
-                },
-                "location_type": "APPROXIMATE",
-                "viewport": {
-                    "northeast": {
-                        "lat": 37.469887,
-                        "lng": -122.0446721
-                    },
-                    "southwest": {
-                        "lat": 37.3567599,
-                        "lng": -122.1178619
-                    }
-                }
-            },
-            "place_id": "ChIJiQHsW0m3j4ARm69rRkrUF3w",
-            "types": [
-                "locality",
-                "political"
-            ]
-        }
-    ],
-    "status": "OK"
-}
+module.exports.sampleData = [
+  {
+    name: 'P&O Cruises Australia',
+    rating: 2.4,
+    address: '15 Mount Street, North Sydney',
+  }, {
+    name: 'Carnival International',
+    rating: 3.7,
+    address: '1/171 Clarence Street, Sydney',
+  }, {
+    name: 'Rhythmboat Cruises',
+    rating: 3.8,
+    address: 'King Street Wharf, King Street, Sydney',
+  }, {
+    name: 'Vagabond Cruises',
+    rating: 3.8,
+    address: '37 Bank Street, Pyrmont',
+  }, {
+    name: 'Sydney Princess Cruises',
+    rating: 3.4,
+    address: '37 Bank Street, Pyrmont',
+  }, {
+    name: 'MSC Cruises Australia & New Zealand',
+    rating: 2,
+    address: '532/5-19 Lime Street, Sydney',
+  }, {
+    name: 'Sydney Harbour Cruises Pty Ltd',
+    rating: 5,
+    address: 'Level 32/1 Market Street, Sydney',
+  }, {
+    name: 'Creative Cruising',
+    rating: undefined,
+    address: 'Travel House, 35 Grafton Street, Bondi Junction',
+  }, {
+    name: 'Viking River Cruises Australia',
+    rating: undefined,
+    address: '8/107 Walker Street, North Sydney',
+  }, {
+    name: 'Lunch Cruise with Jazz on Sydney Harbour',
+    rating: 3,
+    address: '37 Bank Street, Pyrmont',
+  }, {
+    name: 'Sydney Harbour Charter Cruises',
+    rating: 4.5,
+    address: '5/32 The Promenade, Sydney',
+  }, {
+    name: 'Sydney Event Cruises',
+    rating: 5,
+    address: 'Bridge Road, Ultimo',
+  }, {
+    name: 'Rosman Cruises',
+    rating: 3,
+    address: '6 John Street, McMahons Point',
+  }, {
+    name: 'Flagship Cruises',
+    rating: 5,
+    address: '1-3 Phoebe Street, Balmain',
+  }, {
+    name: 'Quayside Charters - Sydney Harbour Cruises - New Year Eve Cruises Sydney - Corporate Cruises',
+    rating: 5,
+    address: '10/189 Liverpool Street, Sydney',
+  }, {
+    name: 'Cronulla Ferries',
+    rating: 3.9,
+    address: '2 Tonkin Street, Cronulla',
+  }, {
+    name: 'Cruising Restaurants of Sydney',
+    rating: undefined,
+    address: '32 The Promenade, Sydney',
+  }, {
+    name: 'Constellation cruises',
+    rating: 2.7,
+    address: 'Hickson Road, Sydney',
+  }, {
+    name: 'Karisma Cruises',
+    rating: 5,
+    address: 'Jones Bay Wharf, 19-21 Pirrama Road, Pyrmont',
+  }, {
+    name: 'Sydney Harbour Party Cruises',
+    rating: undefined,
+    address: 'Level 12, 95 Pitt Street, Sydney',
+  },
+];

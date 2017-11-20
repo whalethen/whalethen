@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from '../../node_modules/axios';
-import Search from './search';
-import Timeline from './timeline';
-import TimelineInputBox from './timelineInputBox';
-import StartDateBox from './startDateBox';
-import EndDateBox from './endDateBox';
+import axios from 'axios';
+import Search from './Search';
+import Timeline from './Timeline';
+import TimelineInputBox from './TimelineInputBox';
+import StartDateBox from './StartDateBox';
+import EndDateBox from './EndDateBox';
 
 
 class App extends React.Component {
@@ -16,7 +16,8 @@ class App extends React.Component {
       timelineName: '',
       startDate: '',
       endDate: '',
-      numberOfDays: 0,
+      numberOfDays: 4,
+      timelineId: '',
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -42,6 +43,14 @@ class App extends React.Component {
     }
   }
 
+  addNewEvent(event) {
+    // input: event => {name, type}
+    axios.post('/entry', event)
+      .then(() => axios.get(`/timeline/${this.state.timelineId}`))
+      .then(response => this.setState({ data: response }))
+      .catch(err => console.error(err));
+  }
+
   countDays() {
     if (this.state.startDate.includes('.') || this.state.endDate.includes('.')) {
       alert('Incorrect Date Format. Please format in XX/XX/XXXX');
@@ -57,8 +66,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="title">WhaleThen</div>
-        <div className="timelineParams">
+        <div className="container timelineParams">
+          <div className="title">WhaleThen</div>
           <TimelineInputBox
             onInput={this.onInputChange}
             onEnter={this.onEnter}
@@ -75,14 +84,8 @@ class App extends React.Component {
             Make New Schedule
           </button>
         </div>
-        <div className="columnsContainer">
-          <div className="TimelineContainer">
-            <Timeline />
-          </div>
-          <div className="SearchContainer">
-            <Search data={this.state.data}/>
-          </div>
-        </div>
+        <Timeline />
+        <Search data={this.state.data} numberOfDays={this.state.numberOfDays} />
       </div>
     );
   }

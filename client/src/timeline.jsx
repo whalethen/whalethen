@@ -1,20 +1,23 @@
 import React from 'react';
-import DayView from './day'
+import DayView from './Day'
 
-const Timeline = (props) => {
-
-  return (
-    <div className="Timeline">
-      <div className="timelineTitle">Timeline</div>
-      <div className="dayContainer">
-        {<DayView />}
-        {<DayView />}
-        {<DayView />}
-        {<DayView />}
-      </div>
+const Timeline = props => (
+  <div className="container timeline">
+    {/* <div className="timelineTitle">Timeline</div> */}
+    <div className="container day">
+      <DayView />
+      <DayView />
+      <DayView />
+      <DayView />
+      <DayView />
+      <DayView />
+      <DayView />
+      <DayView />
+      <DayView />
     </div>
-  )
-}
+  </div>
+);
+
 
 
 export default Timeline;

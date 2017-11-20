@@ -1,15 +1,16 @@
 import React from 'react';
-// import
+import Event from './Events';
 
 const Day = (props) => {
   return (
     <div className="dayView">
       <div className="dayTitle">Day X</div>
       <div className="events">
-        <div> some event here </div>
-        <div> some event here </div>
-        <div> some event here </div>
-        <div> some event here </div>
+        <Event event={props} />
+        <Event event={props} />
+        <Event event={props} />
+        <Event event={props} />
+        <Event event={props} />
       </div>
     </div>
   );

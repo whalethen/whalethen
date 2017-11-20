@@ -1,24 +1,68 @@
 body {
+  margin: 0 auto;
+  box-sizing: border-box;
   /*background: grey;*/
 }
 
 .App {
-
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 0.20fr 5fr;
+  grid-template-areas: "navbar search" "timeline search";
 }
 
-.dayContainer {
+.container {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.day {
   display: flex;
+  min-height: min-content;
 }
 
 .dayView {
   padding: 5px;
+  width: 200px;
+  border: 1px solid black;
 }
 
-.searchComponent {
+.searchComponent {}
 
+.searchList {
+  /*min-height: min-content;*/
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
-.searchTitle {
 
+.searchBar {
+  margin-bottom: 20px;
+}
+
+.search {
+  display: flex;
+  grid-area: search;
+  align-content: stretch;
+  flex-direction: column;
+}
+
+.searchSubmit button {
+  padding-left: 1px;
+  text-align: center;
+}
+
+.searchEntry {
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.scrollbox {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  height: 90vh;
 }
 
 .startDate {
@@ -39,22 +83,38 @@ body {
 }
 
 .inputBox {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
   padding: 5px;
+}
+
+input {
+  border-radius: 5px;
+  padding-left: 5px;
 }
 
 .timelineParams {
   display: flex;
+  grid-area: navbar;
+  justify-content: space-around;
 }
 
-.searchContainer {
-
+.timelineParams button {
+  background: white;
+  border-radius: 2px;
+  height: 33%;
+  align-self: center;
 }
 
-.timelineContainer {
-
-}
-
-.columnsContainer {
+.timeline {
   display: flex;
-  flex-direction: row;
+  grid-area: timeline;
+  height: 90vh;
+  flex: 1;
+  overflow: auto;
+}
+
+.event {
+  margin: 5px;
 }
