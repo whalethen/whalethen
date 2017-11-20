@@ -22,14 +22,16 @@ app.get('/timeline/:timelineId', (request, response) => {
     .catch(err => console.error('error: ', err));
 });
 
+app.post('/timeline', ({ body }, response) => {
+  db.addNewTimeline(body.timelineId, body.numberOfDays)
+    .then(() => response.status(200))
+    .catch(err => response.status(409));
+});
+
 app.post('/entry', ({ body }, response) => {
-  console.log(body)
-  // for adding an extry to a day model
   db.addNewEvent(body.event, body.timelineId, body.day)
-  .tap(() => console.log(body))
     .then(() => response.status(200))
     .catch(() => response.status(409))
-  // response.send(body.event)
 });
 
 app.put('/entry', (request, response) => {
