@@ -26,27 +26,43 @@ const eventSchema = mongoose.Schema({
 const daySchema = mongoose.Schema({
   day: Number,
   timelineId: Number,
+<<<<<<< HEAD
   timelineName: String,
+=======
+>>>>>>> 268e32e27b8d58971eb33b2ab06a46221c03270c
   events: [eventSchema],
 });
 
 const Day = mongoose.model('Day', daySchema);
 const Event = mongoose.model('Event', eventSchema);
 
+<<<<<<< HEAD
 const addNewTimeline = (timelineId, numberOfDays, timelineName) => {
   const timeline = [];
   for (let day = 1; day <= numberOfDays; day += 1) {
     const newDay = new Day({ day, timelineId, timelineName });
+=======
+const addNewTimeline = (timelineId, numberOfDays) => {
+  const timeline = [];
+  for (let day = 1; day <= numberOfDays; day += 1) {
+    const newDay = new Day({ day, timelineId });
+>>>>>>> 268e32e27b8d58971eb33b2ab06a46221c03270c
     timeline.push(newDay);
   }
   return Promise.map(timeline, day => day.save());
 };
 
 const getTimelineById = timelineId => Day.findAsync({ timelineId });
+<<<<<<< HEAD
 const getTimelineByName = timelineName => Day.findAsync({ timelineName });
 
 const addEventToDay = (event, timelineId, day, timelineName) => {
   return Day.findOneAsync({ timelineId, day, timelineName })
+=======
+
+const addEventToDay = (event, timelineId, day) => {
+  return Day.findOneAsync({ timelineId, day })
+>>>>>>> 268e32e27b8d58971eb33b2ab06a46221c03270c
     .tap(model => model.events.push(event))
     .then(model => model.save());
 };
@@ -58,7 +74,10 @@ const addNewEvent = (event, timelineId, day) => {
 };
 
 module.exports.getTimelineById = getTimelineById;
+<<<<<<< HEAD
 module.exports.getTimelineByName = getTimelineByName;
+=======
+>>>>>>> 268e32e27b8d58971eb33b2ab06a46221c03270c
 module.exports.addNewTimeline = addNewTimeline;
 module.exports.addNewEvent = addNewEvent;
 module.exports.addEventToDay = addEventToDay;
