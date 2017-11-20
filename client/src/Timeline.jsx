@@ -12,6 +12,8 @@ const Timeline = ({ timelineData }) => (
   </div>
 );
 
-
+Timeline.propTypes = {
+  timelineData: propTypes.arrayOf(propTypes.object).isRequired,
+};
 
 export default Timeline;

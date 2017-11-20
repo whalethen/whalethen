@@ -13,8 +13,8 @@ const Day = ({ day }) => (
 );
 
 
-// Day.propTypes = {
-//   SOMEDATA: React.PropTypes.object.isRequired
-// };
+Day.propTypes = {
+  day: propTypes.instanceOf(propTypes.object).isRequired,
+};
 
 export default Day;

@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 
-const Events = props => (
+const Events = ({ event }) => (
   <div className="event">
     <div className="eventName">Event Name</div>
     <div className="description">description</div>
@@ -11,8 +11,8 @@ const Events = props => (
 );
 
 
-// Events.propTypes = {
-//   SOMEDATA: React.PropTypes.object.isRequired
-// };
+Events.propTypes = {
+  event: propTypes.instanceOf(propTypes.object).isRequired,
+};
 
 export default Events;
