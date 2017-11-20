@@ -43,6 +43,7 @@ const addNewTimeline = (timelineId, numberOfDays, timelineName) => {
 };
 
 const getTimelineById = timelineId => Day.findAsync({ timelineId });
+const getTimelineByName = timelineName => Day.findAsync({ timelineName });
 
 const addEventToDay = (event, timelineId, day, timelineName) => {
   return Day.findOneAsync({ timelineId, day, timelineName })
@@ -57,6 +58,7 @@ const addNewEvent = (event, timelineId, day) => {
 };
 
 module.exports.getTimelineById = getTimelineById;
+module.exports.getTimelineByName = getTimelineByName;
 module.exports.addNewTimeline = addNewTimeline;
 module.exports.addNewEvent = addNewEvent;
 module.exports.addEventToDay = addEventToDay;
