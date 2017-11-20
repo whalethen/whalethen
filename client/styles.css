@@ -47,8 +47,9 @@ body {
   flex-direction: column;
 }
 
-.searchSubmit {
+.searchSubmit button {
   padding-left: 1px;
+  text-align: center;
 }
 
 .searchEntry {
