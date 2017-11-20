@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 const EndDateBox = ({ onInput, onEnter }) => {
   return (

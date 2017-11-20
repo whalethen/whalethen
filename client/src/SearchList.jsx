@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import propTypes from 'prop-types';
 import SearchEntry from './SearchEntry';
 
 

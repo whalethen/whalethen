@@ -1,6 +1,7 @@
 import React from 'react';
-import DayView from './Day';
 import _ from 'lodash';
+import propTypes from 'prop-types';
+import DayView from './Day';
 
 const Timeline = ({ timelineData }) => (
   <div className="container timeline">
