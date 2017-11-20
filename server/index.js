@@ -20,21 +20,21 @@ app.get('/timeline/:timelineId', (request, response) => {
   db.getTimelineById(request.params.timelineId)
     .then(timeline => response.json(timeline))
     .catch(err => response.status(409))
-    .tap(err => console.error(err));
+    .tapCatch(err => console.error(err));
 });
 
 app.post('/timeline', ({ body }, response) => {
   db.addNewTimeline(body.timelineId, body.numberOfDays)
     .then(() => response.status(200))
     .catch(err => response.status(409))
-    .tap(err => console.error(err));
+    .tapCatch(err => console.error(err));
 });
 
 app.post('/entry', ({ body }, response) => {
   db.addNewEvent(body.event, body.timelineId, body.day)
     .then(() => response.status(200))
     .catch(err => response.status(409))
-    .tap(err => console.error(err));
+    .tapCatch(err => console.error(err));
 });
 
 app.put('/entry', (request, response) => {
@@ -53,7 +53,7 @@ app.get('/search', (request, response) => {
   api.placesApi(location, category)
     .then(result => response.json(result))
     .catch(err => response.status(409))
-    .tap(err => console.error(err));
+    .tapCatch(err => console.error(err));
 });
 
 const port = 1128;
