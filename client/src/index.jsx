@@ -80,7 +80,10 @@ class App extends React.Component {
             onInput={this.onInputChange}
             onEnter={this.onEnter}
           />
-          <button className="scheduleSubmit" onSubmit={event => this.onSubmit(event)}>
+          <button
+            className="scheduleSubmit"
+            onSubmit={event => this.onSubmit(event)}
+          >
             Make New Schedule
           </button>
         </div>
