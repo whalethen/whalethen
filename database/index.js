@@ -26,16 +26,17 @@ const eventSchema = mongoose.Schema({
 const daySchema = mongoose.Schema({
   day: Number,
   timelineId: Number,
+  timelineName: String,
   events: [eventSchema],
 });
 
 const Day = mongoose.model('Day', daySchema);
 const Event = mongoose.model('Event', eventSchema);
 
-const addNewTimeline = (timelineId, numberOfDays) => {
+const addNewTimeline = (timelineId, numberOfDays, timelineName) => {
   const timeline = [];
   for (let day = 1; day <= numberOfDays; day += 1) {
-    const newDay = new Day({ day, timelineId });
+    const newDay = new Day({ day, timelineId, timelineName });
     timeline.push(newDay);
   }
   return Promise.map(timeline, day => day.save());
@@ -43,8 +44,8 @@ const addNewTimeline = (timelineId, numberOfDays) => {
 
 const getTimelineById = timelineId => Day.findAsync({ timelineId });
 
-const addEventToDay = (event, timelineId, day) => {
-  return Day.findOneAsync({ timelineId, day })
+const addEventToDay = (event, timelineId, day, timelineName) => {
+  return Day.findOneAsync({ timelineId, day, timelineName })
     .tap(model => model.events.push(event))
     .then(model => model.save());
 };

@@ -19,22 +19,22 @@ app.get('/timeline/:timelineId', (request, response) => {
   // shown in the current response
   db.getTimelineById(request.params.timelineId)
     .then(timeline => response.json(timeline))
-    .catch(err => response.status(409))
-    .tapCatch(err => console.error(err));
+    .tapCatch(err => console.error(err))
+    .catch(() => response.status(409));
 });
 
 app.post('/timeline', ({ body }, response) => {
   db.addNewTimeline(body.timelineId, body.numberOfDays)
     .then(() => response.status(200))
-    .catch(err => response.status(409))
-    .tapCatch(err => console.error(err));
+    .tapCatch(err => console.error(err))
+    .catch(() => response.status(409));
 });
 
 app.post('/entry', ({ body }, response) => {
-  db.addNewEvent(body.event, body.timelineId, body.day)
+  db.addNewEvent(body.event, body.timelineId, body.day, body.timelineName)
     .then(() => response.status(200))
-    .catch(err => response.status(409))
-    .tapCatch(err => console.error(err));
+    .tapCatch(err => console.error(err))
+    .catch(() => response.status(409));
 });
 
 app.put('/entry', (request, response) => {
@@ -52,8 +52,8 @@ app.get('/search', (request, response) => {
   // for triggering a search to the search api
   api.placesApi(location, category)
     .then(result => response.json(result))
-    .catch(err => response.status(409))
-    .tapCatch(err => console.error(err));
+    .tapCatch(err => console.error(err))
+    .catch(() => response.status(409));
 });
 
 const port = 1128;
