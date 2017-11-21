@@ -1,9 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const SearchListEntry = ({ event, numberOfDays }) => (
+const SearchListEntry = ({ event, days }) => (
   <div className="searchEntry">
-    {/* <div> */}
     <div className="eventName">{event.name}</div>
     <div className="eventAddress">{event.address}</div>
     <div className="eventRating">{event.rating}</div>
@@ -18,7 +17,7 @@ const SearchListEntry = ({ event, numberOfDays }) => (
 
 SearchListEntry.propTypes = {
   event: propTypes.object.isRequired,
-  numberOfDays: propTypes.number,
+  days: propTypes.number.isRequired,
 };
 
 export default SearchListEntry;
