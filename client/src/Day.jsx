@@ -5,7 +5,7 @@ import Event from './Events';
 
 const Day = ({ day }) => (
   <div className="dayView">
-    <div className="dayTitle">Day X</div>
+    <div className="dayTitle">Day {day.day}</div>
     <div className="events">
       {_.map(day, (event, index) => <Event event={event} key={index} />)}
     </div>
@@ -13,8 +13,8 @@ const Day = ({ day }) => (
 );
 
 
-// Day.propTypes = {
-//   SOMEDATA: React.PropTypes.object.isRequired
-// };
+Day.propTypes = {
+  day: propTypes.arrayOf(propTypes.object).isRequired,
+};
 
 export default Day;
