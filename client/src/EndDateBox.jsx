@@ -17,4 +17,9 @@ const EndDateBox = ({ onInput, onEnter }) => (
   </div>
 );
 
+EndDateBox.propTypes = {
+  onInput: propTypes.func.isRequired,
+  onEnter: propTypes.func.isRequired,
+}
+
 export default EndDateBox;

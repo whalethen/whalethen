@@ -12,8 +12,9 @@ const SearchList = ({ searchList, numberOfDays }) => (
   </div>
 );
 
-{/*SearchBar.propTypes = {
- props: React.PropTypes.object.isRequired
-};*/}
+SearchList.propTypes = {
+  searchList: propTypes.array.isRequired,
+  numberOfDays: propTypes.number.isRequired,
+};
 
 export default SearchList;

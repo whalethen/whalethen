@@ -17,5 +17,9 @@ const TimelineInputBox = ({ onInput, onEnter }) => (
   </div>
 );
 
+TimelineInputBox.propTypes = {
+  onInput: propTypes.func.isRequired,
+  onEnter: propTypes.func.isRequired,
+}
 
 export default TimelineInputBox;

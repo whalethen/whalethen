@@ -17,8 +17,8 @@ const SearchListEntry = ({ event, numberOfDays }) => (
 );
 
 SearchListEntry.propTypes = {
-  event: propTypes.instanceOf(propTypes.object).isRequired,
-  numberOfDays: propTypes.number.isRequired,
+  event: propTypes.object.isRequired,
+  numberOfDays: propTypes.number,
 };
 
 export default SearchListEntry;
