@@ -48,7 +48,7 @@ const getTimelineByName = timelineName => Day.findAsync({ timelineName });
 const addEventToDay = (event, timelineId, day, timelineName) => {
   return Day.findOneAsync({ timelineId, day, timelineName })
     .tap(model => model.events.push(event))
-    .then(model => model.save());
+    .then(model => model.saveAsync());
 };
 
 const addNewEvent = (event, timelineId, day) => {
