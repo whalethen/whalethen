@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import moment from 'moment';
 import Search from './Search';
 import Timeline from './Timeline';
 import TimelineInputBox from './TimelineInputBox';
@@ -12,12 +13,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: [],
-      timelineName: '',
+      timelineData: [],
+      timelineName: 'test', // temp until we get some more data built up
       startDate: '',
       endDate: '',
       numberOfDays: 4,
-      timelineId: '',
+      timelineId: 1234, // temp until we get a way to produce these
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -25,6 +26,10 @@ class App extends React.Component {
   }
   componentDidMount() {
     // on init function to make get request to server
+    // temp using 1234 as the timelineId and test as timelineName
+    axios.get(`timeline/${this.state.timelineName}/${this.state.timelineId}`)
+      .then(({ data }) => this.setState({ timelineData: data }))
+      .catch(err => console.error(err));
   }
 
   onInputChange(event) {
@@ -47,20 +52,14 @@ class App extends React.Component {
     // input: event => {name, type}
     axios.post('/entry', event)
       .then(() => axios.get(`/timeline/${this.state.timelineId}`))
-      .then(response => this.setState({ data: response }))
+      .then(response => this.setState({ timelineData: response }))
       .catch(err => console.error(err));
   }
 
   countDays() {
-    if (this.state.startDate.includes('.') || this.state.endDate.includes('.')) {
-      alert('Incorrect Date Format. Please format in XX/XX/XXXX');
-    }
-    const splitVariable = this.state.startDate.includes('-') ? '-' : '/';
-    const start = this.state.startDate.split(splitVariable);
-    const end = this.state.endDate.split(splitVariable);
-    const numberOfDays = ((end[0] - start[0]) * 10) + (end[1] - start[1]);
-
-    this.setState({ numberOfDays });
+    const start = moment(this.state.startDate);
+    const end = moment(this.state.endDate);
+    this.setState({ numberOfDays: end.diff(start, 'days') });
   }
 
   render() {
@@ -80,12 +79,17 @@ class App extends React.Component {
             onInput={this.onInputChange}
             onEnter={this.onEnter}
           />
-          <button className="scheduleSubmit" onSubmit={event => this.onSubmit(event)}>
+          <button
+            className="scheduleSubmit"
+            onSubmit={event => this.onSubmit(event)}
+          >
             Make New Schedule
           </button>
         </div>
-        <Timeline />
-        <Search data={this.state.data} numberOfDays={this.state.numberOfDays} />
+        <Timeline timelineData={this.state.timelineData} />
+        <Search
+          numberOfDays={this.state.numberOfDays}
+        />
       </div>
     );
   }

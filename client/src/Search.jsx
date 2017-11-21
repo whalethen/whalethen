@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import propTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import SearchList from './SearchList';
 import Data from '../../sampleData';

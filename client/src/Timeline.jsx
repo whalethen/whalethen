@@ -1,19 +1,13 @@
 import React from 'react';
-import DayView from './Day'
+import _ from 'lodash';
+import propTypes from 'prop-types';
+import DayView from './Day';
 
-const Timeline = props => (
+const Timeline = ({ timelineData }) => (
   <div className="container timeline">
     {/* <div className="timelineTitle">Timeline</div> */}
     <div className="container day">
-      <DayView />
-      <DayView />
-      <DayView />
-      <DayView />
-      <DayView />
-      <DayView />
-      <DayView />
-      <DayView />
-      <DayView />
+      {_.map(timelineData, (day, index) => <DayView day={day} key={index} />)}
     </div>
   </div>
 );

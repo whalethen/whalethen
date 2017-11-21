@@ -1,23 +1,20 @@
 import React from 'react';
+import _ from 'lodash';
+import propTypes from 'prop-types';
 import Event from './Events';
 
-const Day = (props) => {
-  return (
-    <div className="dayView">
-      <div className="dayTitle">Day X</div>
-      <div className="events">
-        <Event event={props} />
-        <Event event={props} />
-        <Event event={props} />
-        <Event event={props} />
-        <Event event={props} />
-      </div>
+const Day = ({ day }) => (
+  <div className="dayView">
+    <div className="dayTitle">Day {day.day}</div>
+    <div className="events">
+      {_.map(day.events, (event, index) => <Event event={event} key={index} />)}
     </div>
-  );
-};
+  </div>
+);
 
-// Day.propTypes = {
-//   SOMEDATA: React.PropTypes.object.isRequired
-// };
+
+Day.propTypes = {
+  day: propTypes.arrayOf(propTypes.object).isRequired,
+};
 
 export default Day;
