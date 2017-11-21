@@ -5,7 +5,7 @@ import Event from './Events';
 
 const Day = ({ day }) => (
   <div className="dayView">
-    <div className="dayTitle">Day X</div>
+    <div className="dayTitle">Day {day.day}</div>
     <div className="events">
       {_.map(day.events, (event, index) => <Event event={event} key={index} />)}
     </div>
