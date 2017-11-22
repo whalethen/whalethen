@@ -29,7 +29,7 @@ class App extends React.Component {
     // on init function to make get request to server
     // temp using 1234 as the timelineId and test as timelineName
     axios.get(`timeline/${this.state.timelineName}/${this.state.timelineId}`)
-      .then(({ data }) => this.setState({ timelineData: data }))
+      .then(({ data }) => {this.setState({ timelineData: data }); console.log(data)})
       .catch(err => console.error(err));
   }
 
@@ -52,7 +52,8 @@ class App extends React.Component {
   addNewEvent(event, selectedDay) {
     // input: event => {name, type}
     const day = Number(selectedDay.slice(4));
-    axios.post('/entry', {event, day})
+    const { timelineId, timelineName } = this.state;
+    axios.post('/entry', { event, timelineId, day, timelineName })
       .then(() => axios.get(`/timeline/${this.state.timelineId}`))
       .then(response => this.setState({ timelineData: response }))
       .catch(err => console.error(err));

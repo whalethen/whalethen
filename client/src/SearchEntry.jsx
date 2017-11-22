@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const SearchListEntry = ({ event, numberOfDays=4, addNewEvent, onDaySelect, selectedDay }) => {
+const SearchListEntry = ({ event, numberOfDays, addNewEvent, onDaySelect, selectedDay }) => {
   const daysArr = ['Choose Day'];
   for (let i = 1; i <= numberOfDays; i+=1) {
     daysArr.push(`Day ${i}`);
