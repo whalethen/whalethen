@@ -30,7 +30,6 @@ class Search extends React.Component {
       .catch(err => console.error(err));
   }
   onDaySelect(e) {
-    console.log(e.target.value)
     this.setState({
       selectedDay: e.target.value,
     });
