@@ -58,19 +58,23 @@ class App extends React.Component {
           numberOfDays: data.length,
           timelineId: data[0].timelineId,
           timelineName: data[0].timelineName,
-        });
+        }, () => console.log(this.state.timelineData));
       })
       .catch(err => console.error(err));
   }
 
   addNewEvent(event, selectedDay) {
     // input: event => {name, type}
+    console.log('new event gooo')
     const day = Number(selectedDay.slice(4));
-    const { timelineId, timelineName } = this.state;
     axios.post('/entry', {
-      event, timelineId, day, timelineName,
+      event,
+      timelineId: this.state.timelineId,
+      day,
+      timelineName: 'test',
     })
-      .then(() => this.getTrip());
+      .then(() => this.getTrip())
+      .catch(err => console.error('add event error: ', err))
   }
 
   countDays() {
