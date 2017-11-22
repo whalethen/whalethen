@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import moment from 'moment';
+import shortid from 'shortid';
 import Search from './Search';
 import Timeline from './Timeline';
 import TimelineInputBox from './TimelineInputBox';
@@ -39,6 +40,7 @@ class App extends React.Component {
   }
 
   onSubmit() {
+    this.setState({ timelineId: shortid.generate() });
     this.countDays();
   }
 
@@ -69,9 +71,6 @@ class App extends React.Component {
       event, timelineId, day, timelineName,
     })
       .then(() => this.getTrip());
-    // .then(() => axios.get(`timeline/${this.state.timelineName}/${this.state.timelineId}`))
-    // .then(response => this.setState({ timelineData: response }))
-    // .catch(err => console.error(err));
   }
 
   countDays() {
