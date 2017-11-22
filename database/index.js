@@ -42,14 +42,18 @@ const addNewTimeline = (timelineId, numberOfDays, timelineName) => {
   return Promise.map(timeline, day => day.saveAsync());
 };
 
-const getTimelineById = timelineId => Day.findAsync({ timelineId })
-  .then(results => results.sort((a, b) => a.day - b.day));
+const getTimelineById = (timelineId) => {
+  return Day.findAsync({ timelineId })
+    .then(results => results.sort((a, b) => a.day - b.day));
+};
+
 const getTimelineByName = timelineName => Day.findAsync({ timelineName });
 
-const addEventToDay = (event, timelineId, day, timelineName) => {
-  return Day.findOneAsync({ timelineId, day, timelineName })
+const addEventToDay = (event, timelineId, day) => {
+  return Day.findOneAsync({ timelineId, day })
     .tap(model => model.events.push(event))
-    .then(model => model.saveAsync());
+    .then(model => model.saveAsync())
+    .catch(err => console.error(err));
 };
 
 const addNewEvent = (event, timelineId, day, timelineName) => {
