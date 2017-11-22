@@ -4,10 +4,15 @@ import propTypes from 'prop-types';
 import SearchEntry from './SearchEntry';
 
 
-const SearchList = ({ searchList, numberOfDays }) => (
+const SearchList = ({ searchList, numberOfDays, addNewEvent }) => (
   <div className="searchList">
     {_.map(searchList, (event, index) => (
-      <SearchEntry days={numberOfDays} key={index} event={event} />
+      <SearchEntry
+        days={numberOfDays}
+        key={index}
+        event={event}
+        addNewEvent={addNewEvent}
+      />
       ))}
   </div>
 );

@@ -12,6 +12,7 @@ class Search extends React.Component {
       locationSearch: '',
       termBar: '',
       searchList: Data.sampleData,
+      daySelect: '',
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -42,7 +43,11 @@ class Search extends React.Component {
       <div className="container search">
         <SearchBar onSubmit={this.onSubmit} handleCat={this.handleCat} handleLoc={this.handleLoc} />
         <div className="scrollbox">
-          <SearchList searchList={this.state.searchList} />
+          <SearchList
+            searchList={this.state.searchList}
+            numberOfDays={this.props.numberOfDays}
+            addNewEvent={this.props.addNewEvent}
+          />
         </div>
       </div>
     );

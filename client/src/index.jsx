@@ -23,6 +23,7 @@ class App extends React.Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onEnter = this.onEnter.bind(this);
+    this.addNewEvent = this.addNewEvent.bind(this);
   }
   componentDidMount() {
     // on init function to make get request to server
@@ -48,7 +49,7 @@ class App extends React.Component {
     }
   }
 
-  addNewEvent(event) {
+  addNewEvent(event, day) {
     // input: event => {name, type}
     axios.post('/entry', event)
       .then(() => axios.get(`/timeline/${this.state.timelineId}`))
@@ -89,6 +90,7 @@ class App extends React.Component {
         <Timeline timelineData={this.state.timelineData} />
         <Search
           numberOfDays={this.state.numberOfDays}
+          addNewEvent={this.addNewEvent}
         />
       </div>
     );
