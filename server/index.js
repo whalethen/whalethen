@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 const api = require('./placesApi.js');
 const db = require('../database/');
 
@@ -12,6 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.options('/', (request, response) => response.json('GET,POST,PUT,GET'));
+
+app.get('/', (request, response) => {
+  response.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'));
+});
 
 app.get('/timeline/:timelineName/:timelineId', (request, response) => {
   // get route with based on timeline id endpoint. Should
