@@ -69,6 +69,7 @@ class Search extends React.Component {
 
 Search.propTypes = {
   numberOfDays: propTypes.number.isRequired,
+  addNewEvent: propTypes.func.isRequired,
 };
 
 export default Search;
