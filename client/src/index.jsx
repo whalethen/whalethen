@@ -76,7 +76,7 @@ class App extends React.Component {
   countDays() {
     const start = moment(this.state.startDate);
     const end = moment(this.state.endDate);
-    this.setState({ numberOfDays: end.diff(start, 'days') }, () => console.log(this.state));
+    this.setState({ numberOfDays: end.diff(start, 'days') });
   }
 
   render() {
