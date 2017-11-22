@@ -29,7 +29,7 @@ class App extends React.Component {
     // on init function to make get request to server
     // temp using 1234 as the timelineId and test as timelineName
     axios.get(`timeline/${this.state.timelineName}/${this.state.timelineId}`)
-      .then(({ data }) => {this.setState({ timelineData: data }); console.log(data)})
+      .then(({ data }) => {this.setState({ timelineData: data, numberOfDays: data.length, timelineId: data[0].timelineId, timelineName: data[0].timelineName }); console.log(this.state)})
       .catch(err => console.error(err));
   }
 
