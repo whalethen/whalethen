@@ -49,8 +49,9 @@ class App extends React.Component {
     }
   }
 
-  addNewEvent(event, day) {
+  addNewEvent(event, selectedDay) {
     // input: event => {name, type}
+    const day = Number(selectedDay.slice(4));
     axios.post('/entry', {event, day})
       .then(() => axios.get(`/timeline/${this.state.timelineId}`))
       .then(response => this.setState({ timelineData: response }))

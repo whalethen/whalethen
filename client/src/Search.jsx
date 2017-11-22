@@ -12,7 +12,7 @@ class Search extends React.Component {
       locationSearch: '',
       termBar: '',
       searchList: Data.sampleData,
-      daySelect: '',
+      selectedDay: '',
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -28,6 +28,12 @@ class Search extends React.Component {
         });
       })
       .catch(err => console.error(err));
+  }
+  onDaySelect(e) {
+    console.log(e.target.value)
+    this.setState({
+      selectedDay: e.target.value,
+    });
   }
   handleCat(e) {
     this.setState({
@@ -48,6 +54,8 @@ class Search extends React.Component {
             searchList={this.state.searchList}
             numberOfDays={this.props.numberOfDays}
             addNewEvent={this.props.addNewEvent}
+            onDaySelect={this.onDaySelect}
+            selectedDay={this.state.selectedDay}
           />
         </div>
       </div>
