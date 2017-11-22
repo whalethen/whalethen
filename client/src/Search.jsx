@@ -47,7 +47,11 @@ class Search extends React.Component {
   render() {
     return (
       <div className="container search">
-        <SearchBar onSubmit={this.onSubmit} handleCat={this.handleCat} handleLoc={this.handleLoc} />
+        <SearchBar
+          onSubmit={this.onSubmit}
+          handleCat={this.handleCat}
+          handleLoc={this.handleLoc}
+        />
         <div className="scrollbox">
           <SearchList
             searchList={this.state.searchList}
@@ -63,8 +67,8 @@ class Search extends React.Component {
 }
 
 
-// Search.propTypes = {
-//   SOMEDATA: React.PropTypes.array.isRequired,
-// };
+Search.propTypes = {
+  numberOfDays: propTypes.number.isRequired,
+};
 
 export default Search;

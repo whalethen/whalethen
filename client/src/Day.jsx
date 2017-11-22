@@ -14,7 +14,7 @@ const Day = ({ day }) => (
 
 
 Day.propTypes = {
-  day: propTypes.arrayOf(propTypes.object).isRequired,
+  day: propTypes.instanceOf(Object).isRequired,
 };
 
 export default Day;

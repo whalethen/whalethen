@@ -99,7 +99,7 @@ class App extends React.Component {
           />
           <button
             className="scheduleSubmit"
-            onSubmit={event => this.onSubmit(event)}
+            onClick={() => this.onSubmit()}
           >
             Make New Schedule
           </button>

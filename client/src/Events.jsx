@@ -11,8 +11,8 @@ const Events = ({ event }) => (
 );
 
 
-// Events.propTypes = {
-//   SOMEDATA: React.PropTypes.object.isRequired
-// };
+Events.propTypes = {
+  event: propTypes.instanceOf(Object).isRequired,
+};
 
 export default Events;

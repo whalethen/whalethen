@@ -26,4 +26,9 @@ const SearchListEntry = ({ event, numberOfDays, addNewEvent, onDaySelect, select
   );
 };
 
+SearchListEntry.propTypes = {
+  event: propTypes.instanceOf(Object).isRequired,
+  days: propTypes.number.isRequired,
+};
+
 export default SearchListEntry;

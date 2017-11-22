@@ -19,8 +19,9 @@ const SearchList = ({ searchList, numberOfDays, addNewEvent, onDaySelect, select
   </div>
 );
 
-{/*SearchBar.propTypes = {
- props: React.PropTypes.object.isRequired
-};*/}
+SearchList.propTypes = {
+  searchList: propTypes.instanceOf(Array).isRequired,
+  numberOfDays: propTypes.number.isRequired,
+};
 
 export default SearchList;

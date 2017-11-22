@@ -17,5 +17,10 @@ const StartDateBox = ({ onInput, onEnter }) => (
   </div>
 );
 
+StartDateBox.propTypes = {
+  onInput: propTypes.func.isRequired,
+  onEnter: propTypes.func.isRequired,
+};
+
 
 export default StartDateBox;
