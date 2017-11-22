@@ -1,9 +1,17 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const SearchListEntry = ({ event, numberOfDays, addNewEvent, onDaySelect, selectedDay }) => {
+const SearchListEntry = (props) => {
+  const {
+    event,
+    numberOfDays,
+    addNewEvent,
+    onDaySelect,
+    selectedDay,
+  } = props;
+
   const daysArr = ['Choose Day'];
-  for (let i = 1; i <= numberOfDays; i+=1) {
+  for (let i = 1; i <= numberOfDays; i += 1) {
     daysArr.push(`Day ${i}`);
   }
 
@@ -20,7 +28,12 @@ const SearchListEntry = ({ event, numberOfDays, addNewEvent, onDaySelect, select
       </div>
 
       <div>
-        <button className="addEvent" onClick={() => addNewEvent(event, selectedDay)}>Add Event</button>
+        <button
+          className="addEvent"
+          onClick={() => addNewEvent(event, selectedDay)}
+        >
+            Add Event
+        </button>
       </div>
     </div>
   );
@@ -28,7 +41,10 @@ const SearchListEntry = ({ event, numberOfDays, addNewEvent, onDaySelect, select
 
 SearchListEntry.propTypes = {
   event: propTypes.instanceOf(Object).isRequired,
-  days: propTypes.number.isRequired,
+  addNewEvent: propTypes.func.isRequired,
+  onDaySelect: propTypes.func.isRequired,
+  selectedDay: propTypes.string.isRequired,
+  numberOfDays: propTypes.number.isRequired,
 };
 
 export default SearchListEntry;
