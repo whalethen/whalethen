@@ -24,20 +24,12 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onEnter = this.onEnter.bind(this);
     this.addNewEvent = this.addNewEvent.bind(this);
+    this.getTrip = this.getTrip.bind(this);
   }
   componentDidMount() {
     // on init function to make get request to server
     // temp using 1234 as the timelineId and test as timelineName
-    axios.get(`timeline/${this.state.timelineName}/${this.state.timelineId}`)
-      .then(({ data }) => {
-        this.setState({
-          timelineData: data,
-          numberOfDays: data.length,
-          timelineId: data[0].timelineId,
-          timelineName: data[0].timelineName,
-        });
-      })
-      .catch(err => console.error(err));
+    this.getTrip();
   }
 
   onInputChange(event) {
@@ -56,6 +48,19 @@ class App extends React.Component {
     }
   }
 
+  getTrip() {
+    axios.get(`timeline/${this.state.timelineName}/${this.state.timelineId}`)
+      .then(({ data }) => {
+        this.setState({
+          timelineData: data,
+          numberOfDays: data.length,
+          timelineId: data[0].timelineId,
+          timelineName: data[0].timelineName,
+        });
+      })
+      .catch(err => console.error(err));
+  }
+
   addNewEvent(event, selectedDay) {
     // input: event => {name, type}
     const day = Number(selectedDay.slice(4));
@@ -63,9 +68,10 @@ class App extends React.Component {
     axios.post('/entry', {
       event, timelineId, day, timelineName,
     })
-      .then(() => axios.get(`/timeline/${this.state.timelineId}`))
-      .then(response => this.setState({ timelineData: response }))
-      .catch(err => console.error(err));
+      .then(() => this.getTrip());
+    // .then(() => axios.get(`timeline/${this.state.timelineName}/${this.state.timelineId}`))
+    // .then(response => this.setState({ timelineData: response }))
+    // .catch(err => console.error(err));
   }
 
   countDays() {
