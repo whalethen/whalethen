@@ -42,7 +42,8 @@ const addNewTimeline = (timelineId, numberOfDays, timelineName) => {
   return Promise.map(timeline, day => day.save());
 };
 
-const getTimelineById = timelineId => Day.findAsync({ timelineId });
+const getTimelineById = timelineId => Day.findAsync({ timelineId })
+  .then(results => results.sort((a, b) => a.day - b.day));
 const getTimelineByName = timelineName => Day.findAsync({ timelineName });
 
 const addEventToDay = (event, timelineId, day, timelineName) => {
@@ -51,10 +52,10 @@ const addEventToDay = (event, timelineId, day, timelineName) => {
     .then(model => model.saveAsync());
 };
 
-const addNewEvent = (event, timelineId, day) => {
+const addNewEvent = (event, timelineId, day, timelineName) => {
   const newEvent = new Event(event);
   return newEvent.saveAsync()
-    .then(result => addEventToDay(result, timelineId, day));
+    .then(result => addEventToDay(result, timelineId, day, timelineName));
 };
 
 module.exports.getTimelineById = getTimelineById;
