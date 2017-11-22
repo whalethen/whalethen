@@ -20,6 +20,6 @@ const EndDateBox = ({ onInput, onEnter }) => (
 EndDateBox.propTypes = {
   onInput: propTypes.func.isRequired,
   onEnter: propTypes.func.isRequired,
-}
+};
 
 export default EndDateBox;
