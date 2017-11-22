@@ -18,6 +18,7 @@ class Search extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.handleCat = this.handleCat.bind(this);
     this.handleLoc = this.handleLoc.bind(this);
+    this.onDaySelect = this.onDaySelect.bind(this);
   }
   onSubmit() {
     axios.get('/search', { category: this.state.termBar, location: this.state.locationSearch })

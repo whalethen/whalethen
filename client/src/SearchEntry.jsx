@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const SearchListEntry = ({ event, numberOfDays=4, addNewEvent }) => {
+const SearchListEntry = ({ event, numberOfDays=4, addNewEvent, daySelect }) => {
   const daysArr = [];
-  for (let i = 1; i <= numberOfDays; i+1) {
+  for (let i = 1; i <= numberOfDays; i+=1) {
     daysArr.push(`Day ${i}`);
   }
 
@@ -14,16 +14,16 @@ const SearchListEntry = ({ event, numberOfDays=4, addNewEvent }) => {
       <div className="eventRating">{event.rating}</div>
 
       <div>
-        <select className="selectDays">
+        <select className="selectDays" onSelect={daySelect}>
           {daysArr.map(day => <option value={day} key={day}>{day}</option>)}
         </select>
       </div>
 
       <div>
-        <button className="addEvent">Add Event</button>
+        <button className="addEvent" onClick={addNewEvent}>Add Event</button>
       </div>
     </div>
-  )
+  );
 };
 
 export default SearchListEntry;

@@ -51,7 +51,7 @@ class App extends React.Component {
 
   addNewEvent(event, day) {
     // input: event => {name, type}
-    axios.post('/entry', event)
+    axios.post('/entry', {event, day})
       .then(() => axios.get(`/timeline/${this.state.timelineId}`))
       .then(response => this.setState({ timelineData: response }))
       .catch(err => console.error(err));
