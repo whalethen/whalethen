@@ -1,19 +1,30 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const SearchListEntry = ({ event, days }) => (
-  <div className="searchEntry">
-    <div className="eventName">{event.name}</div>
-    <div className="eventAddress">{event.address}</div>
-    <div className="eventRating">{event.rating}</div>
+const SearchListEntry = ({ event, numberOfDays, addNewEvent, onDaySelect, selectedDay }) => {
+  const daysArr = ['Choose Day'];
+  for (let i = 1; i <= numberOfDays; i+=1) {
+    daysArr.push(`Day ${i}`);
+  }
 
-    {/* </div>
-    <select name="days">
-      {daysArr.map(day => <option value={day}>{day}</option>
-    )}
-    </select> */}
-  </div>
-);
+  return (
+    <div className="searchEntry">
+      <div className="eventName">{event.name}</div>
+      <div className="eventAddress">{event.address}</div>
+      <div className="eventRating">{event.rating}</div>
+
+      <div>
+        <select className="selectDays" onChange={onDaySelect}>
+          {daysArr.map(day => <option value={day} key={day}>{day}</option>)}
+        </select>
+      </div>
+
+      <div>
+        <button className="addEvent" onClick={() => addNewEvent(event, selectedDay)}>Add Event</button>
+      </div>
+    </div>
+  );
+};
 
 SearchListEntry.propTypes = {
   event: propTypes.instanceOf(Object).isRequired,

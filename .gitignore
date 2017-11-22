@@ -1,5 +1,6 @@
 ### node etc ###
 config.js
+package-lock.json
 
 # Logs
 logs
@@ -67,3 +68,6 @@ bower_components/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Test Data #
+database/testDB_js.js
