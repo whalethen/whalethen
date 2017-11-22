@@ -71,9 +71,6 @@ class App extends React.Component {
       event, timelineId, day, timelineName,
     })
       .then(() => this.getTrip());
-    // .then(() => axios.get(`timeline/${this.state.timelineName}/${this.state.timelineId}`))
-    // .then(response => this.setState({ timelineData: response }))
-    // .catch(err => console.error(err));
   }
 
   countDays() {
