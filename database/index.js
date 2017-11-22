@@ -39,7 +39,7 @@ const addNewTimeline = (timelineId, numberOfDays, timelineName) => {
     const newDay = new Day({ day, timelineId, timelineName });
     timeline.push(newDay);
   }
-  return Promise.map(timeline, day => day.save());
+  return Promise.map(timeline, day => day.saveAsync());
 };
 
 const getTimelineById = timelineId => Day.findAsync({ timelineId });
