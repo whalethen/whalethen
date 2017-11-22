@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import moment from 'moment';
 import Search from './Search';
 import Timeline from './Timeline';
 import TimelineInputBox from './TimelineInputBox';
@@ -56,15 +57,9 @@ class App extends React.Component {
   }
 
   countDays() {
-    if (this.state.startDate.includes('.') || this.state.endDate.includes('.')) {
-      alert('Incorrect Date Format. Please format in XX/XX/XXXX');
-    }
-    const splitVariable = this.state.startDate.includes('-') ? '-' : '/';
-    const start = this.state.startDate.split(splitVariable);
-    const end = this.state.endDate.split(splitVariable);
-    const numberOfDays = ((end[0] - start[0]) * 10) + (end[1] - start[1]);
-
-    this.setState({ numberOfDays });
+    const start = moment(this.state.startDate);
+    const end = moment(this.state.endDate);
+    this.setState({ numberOfDays: end.diff(start, 'days') });
   }
 
   render() {
