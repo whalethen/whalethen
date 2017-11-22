@@ -8,7 +8,7 @@ const SearchList = ({ searchList, numberOfDays, addNewEvent, onDaySelect, select
   <div className="searchList">
     {_.map(searchList, (event, index) => (
       <SearchEntry
-        days={numberOfDays}
+        numberOfDays={numberOfDays}
         key={index}
         event={event}
         addNewEvent={addNewEvent}
