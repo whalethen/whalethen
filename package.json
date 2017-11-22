@@ -35,7 +35,8 @@
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "request": "^2.83.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "shortid": "^2.2.8"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",
