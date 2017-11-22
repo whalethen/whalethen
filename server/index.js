@@ -6,10 +6,10 @@ const db = require('../database/');
 
 const app = express();
 
-app.use(express.static(`${__dirname}/../client/`));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(`${__dirname}/../client/`));
 
 app.options('/', (request, response) => response.json('GET,POST,PUT,GET'));
 
@@ -25,14 +25,14 @@ app.get('/timeline/:timelineName/:timelineId', (request, response) => {
 
 app.post('/timeline', ({ body }, response) => {
   db.addNewTimeline(body.timelineId, body.numberOfDays)
-    .then(() => response.status(200))
+    .then(() => response.status(200).end())
     .tapCatch(err => console.error(err))
     .catch(() => response.status(409));
 });
 
 app.post('/entry', ({ body }, response) => {
-  db.addNewEvent(body.event, body.timelineId, body.day, body.timelineName)
-    .then(() => response.status(200))
+  db.addNewEvent(body.event, body.timelineId, body.day)
+    .then(() => response.status(200).end())
     .tapCatch(err => console.error(err))
     .catch(() => response.status(409));
 });
