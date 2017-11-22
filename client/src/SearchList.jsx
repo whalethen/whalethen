@@ -13,7 +13,7 @@ const SearchList = ({ searchList, numberOfDays }) => (
 );
 
 SearchList.propTypes = {
-  searchList: propTypes.array.isRequired,
+  searchList: propTypes.instanceOf(Array).isRequired,
   numberOfDays: propTypes.number.isRequired,
 };
 

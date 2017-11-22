@@ -12,7 +12,7 @@ const Events = ({ event }) => (
 
 
 Events.propTypes = {
-  event: propTypes.object.isRequired,
+  event: propTypes.instanceOf(Object).isRequired,
 };
 
 export default Events;
