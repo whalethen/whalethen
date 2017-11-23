@@ -18,35 +18,43 @@ const CreateEventBox = (props) => {
   }
 
   return (
-    <div>
-      <div>
-        <input
-          placeholder="enter an event"
-          onChange={handleNewEvent}
-        />
-      </div>
+    <div className="createBox">
+      <label className="createEvent" htmlFor="createEvent">
+        <div>
+          <input
+            id="createEventName"
+            type="text"
+            name="createEventName"
+            placeholder="enter an event"
+            onChange={handleNewEvent}
+          />
+        </div>
 
-      <div>
-        <input
-          placeholder="enter an address"
-          onChange={handleNewAddress}
-        />
-      </div>
+        <div>
+          <input
+            id="createEventAddress"
+            type="text"
+            name="createEventAddress"
+            placeholder="enter an address"
+            onChange={handleNewAddress}
+          />
+        </div>
 
-      <div>
-        <select className="selectDays" onChange={onCreateDaySelect}>
-          {daysArr.map(day => <option value={day} key={day}>{day}</option>)}
-        </select>
-      </div>
+        <div>
+          <select className="selectDays" onChange={onCreateDaySelect}>
+            {daysArr.map(day => <option value={day} key={day}>{day}</option>)}
+          </select>
+        </div>
 
-      <div>
-        <button
-          className="addEvent"
-          onClick={createEvent}
-        >
-            Create Event
-        </button>
-      </div>
+        <div>
+          <button
+            className="addEvent"
+            onClick={createEvent}
+          >
+                Create Event
+          </button>
+        </div>
+      </label>
     </div>
   );
 };

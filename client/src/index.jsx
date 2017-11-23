@@ -104,6 +104,10 @@ class App extends React.Component {
       votes: 0,
     };
     this.addNewEvent(eventObj, this.state.createEventDay);
+    this.setState({
+      newEvent: '',
+      newEventAddress: '',
+    });
   }
 
   countDays() {
