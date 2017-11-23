@@ -58,7 +58,7 @@ class App extends React.Component {
           numberOfDays: data.length,
           timelineId: data[0].timelineId,
           timelineName: data[0].timelineName,
-        }, () => console.log(this.state.timelineData));
+        });
       })
       .catch(err => console.error(err));
   }
