@@ -15,6 +15,7 @@ class App extends React.Component {
     super();
     this.state = {
       timelineData: [],
+<<<<<<< HEAD
       timelineName: 'test', // temp until we get some more data built up
       startDate: '',
       endDate: '',
@@ -23,6 +24,13 @@ class App extends React.Component {
       createEventDay: '',
       newEvent: '',
       newEventAddress: '',
+=======
+      timelineName: 'test',
+      startDate: '',
+      endDate: '',
+      numberOfDays: 4,
+      timelineId: 1234,
+>>>>>>> 66b4dd129a007338c337cd9d5c1e90fc2c7bcee8
     };
 
     this.onInputChange = this.onInputChange.bind(this);
