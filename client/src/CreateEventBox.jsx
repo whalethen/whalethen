@@ -23,6 +23,7 @@ const CreateEventBox = (props) => {
       <h3>{timelineName}</h3>
       <label className="createEvent" htmlFor="createEvent">
         <span>
+          Create Event:
           <input
             id="createEventName"
             type="text"
@@ -33,6 +34,7 @@ const CreateEventBox = (props) => {
         </span>
 
         <span>
+          Create Event Address:
           <input
             id="createEventAddress"
             type="text"

@@ -98,6 +98,14 @@ input {
   padding: 5px;
 }
 
+.createEventName {
+  padding: 5px;
+}
+
+.createEventAddress {
+  padding: 5px;
+}
+
 .createBox {
   grid-area: createbox;
   display: flex;
