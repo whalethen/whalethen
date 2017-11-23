@@ -9,7 +9,6 @@ import TimelineInputBox from './TimelineInputBox';
 import StartDateBox from './StartDateBox';
 import EndDateBox from './EndDateBox';
 
-
 class App extends React.Component {
   constructor() {
     super();
@@ -20,12 +19,14 @@ class App extends React.Component {
       endDate: '',
       numberOfDays: 4,
       timelineId: 1234, // temp until we get a way to produce these
+      createEventDay: '',
     };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onEnter = this.onEnter.bind(this);
     this.addNewEvent = this.addNewEvent.bind(this);
     this.getTrip = this.getTrip.bind(this);
+    this.onCreateDaySelect = this.onCreateDaySelect.bind(this);
   }
   componentDidMount() {
     // on init function to make get request to server
@@ -48,6 +49,12 @@ class App extends React.Component {
     if (event.key === 'Enter') {
       this.onSubmit();
     }
+  }
+
+  onCreateDaySelect(e) {
+    this.setState({
+      createEventDay: e.target.value,
+    });
   }
 
   getTrip() {
@@ -103,7 +110,13 @@ class App extends React.Component {
             Make New Schedule
           </button>
         </div>
-        <Timeline timelineData={this.state.timelineData} />
+        <Timeline 
+          timelineData={this.state.timelineData}
+          addNewEvent={this.addNewEvent} 
+          numberOfDays={this.state.numberOfDays}
+          onCreateDaySelect={this.onCreateDaySelect}
+          createEventDay={this.state.createEventDay}
+        />
         <Search
           numberOfDays={this.state.numberOfDays}
           addNewEvent={this.addNewEvent}
