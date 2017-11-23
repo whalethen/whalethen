@@ -8,7 +8,7 @@ import Timeline from './Timeline';
 import TimelineInputBox from './TimelineInputBox';
 import StartDateBox from './StartDateBox';
 import EndDateBox from './EndDateBox';
-
+import CreateEventBox from './CreateEventBox';
 
 class App extends React.Component {
   constructor() {
@@ -20,12 +20,19 @@ class App extends React.Component {
       endDate: '',
       numberOfDays: 4,
       timelineId: 1234, // temp until we get a way to produce these
+      createEventDay: '',
+      newEvent: '',
+      newEventAddress: '',
     };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onEnter = this.onEnter.bind(this);
     this.addNewEvent = this.addNewEvent.bind(this);
     this.getTrip = this.getTrip.bind(this);
+    this.onCreateDaySelect = this.onCreateDaySelect.bind(this);
+    this.handleNewEvent = this.handleNewEvent.bind(this);
+    this.handleNewAddress = this.handleNewAddress.bind(this);
+    this.createEvent = this.createEvent.bind(this);
   }
   componentDidMount() {
     // on init function to make get request to server
@@ -50,6 +57,12 @@ class App extends React.Component {
     }
   }
 
+  onCreateDaySelect(e) {
+    this.setState({
+      createEventDay: e.target.value,
+    });
+  }
+
   getTrip() {
     axios.get(`timeline/${this.state.timelineName}/${this.state.timelineId}`)
       .then(({ data }) => {
@@ -61,6 +74,18 @@ class App extends React.Component {
         });
       })
       .catch(err => console.error(err));
+  }
+
+  handleNewEvent(e) {
+    this.setState({
+      newEvent: e.target.value,
+    });
+  }
+
+  handleNewAddress(e) {
+    this.setState({
+      newEventAddress: e.target.value,
+    });
   }
 
   addNewEvent(event, selectedDay) {
@@ -75,6 +100,19 @@ class App extends React.Component {
     })
       .then(() => this.getTrip())
       .catch(err => console.error('add event error: ', err))
+  }
+
+  createEvent() {
+    const eventObj = {
+      name: this.state.newEvent,
+      address: this.state.newEventAddress,
+      votes: 0,
+    };
+    this.addNewEvent(eventObj, this.state.createEventDay);
+    this.setState({
+      newEvent: '',
+      newEventAddress: '',
+    });
   }
 
   countDays() {
@@ -107,6 +145,16 @@ class App extends React.Component {
             Make New Schedule
           </button>
         </div>
+        <CreateEventBox
+          timelineName={this.state.timelineName}
+          addNewEvent={this.addNewEvent} 
+          numberOfDays={this.state.numberOfDays}
+          onCreateDaySelect={this.onCreateDaySelect}
+          createEventDay={this.state.createEventDay}
+          handleNewEvent={this.handleNewEvent}
+          handleNewAddress={this.handleNewAddress}
+          createEvent={this.createEvent}
+        />
         <Timeline timelineData={this.state.timelineData} />
         <Search
           numberOfDays={this.state.numberOfDays}
