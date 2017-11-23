@@ -7,6 +7,9 @@ const CreateEventBox = (props) => {
     numberOfDays,
     onCreateDaySelect,
     createEventDay,
+    handleNewEvent,
+    handleNewAddress,
+    createEvent,
   } = props;
 
   const daysArr = ['Choose Day'];
@@ -19,12 +22,14 @@ const CreateEventBox = (props) => {
       <div>
         <input
           placeholder="enter an event"
+          onChange={handleNewEvent}
         />
       </div>
 
       <div>
         <input
           placeholder="enter an address"
+          onChange={handleNewAddress}
         />
       </div>
 
@@ -37,9 +42,9 @@ const CreateEventBox = (props) => {
       <div>
         <button
           className="addEvent"
-          onClick={() => addNewEvent(null, createEventDay)}
+          onClick={createEvent}
         >
-            Add Event
+            Create Event
         </button>
       </div>
     </div>
@@ -51,6 +56,9 @@ CreateEventBox.propTypes = {
   numberOfDays: propTypes.number.isRequired,
   onCreateDaySelect: propTypes.func.isRequired,
   createEventDay: propTypes.string.isRequired,
+  handleNewEvent: propTypes.func.isRequired,
+  handleNewAddress: propTypes.func.isRequired,
+  createEvent: propTypes.func.isRequired,
 };
 
 export default CreateEventBox;

@@ -13,6 +13,7 @@ const Timeline = (props) => {
     createEventDay,
     handleNewEvent,
     handleNewAddress,
+    createEvent,
   } = props;
 
   return (
@@ -26,6 +27,7 @@ const Timeline = (props) => {
           createEventDay={createEventDay}
           handleNewEvent={handleNewEvent}
           handleNewAddress={handleNewAddress}
+          createEvent={createEvent}
         />
       </div>
       <div className="container day">
@@ -43,6 +45,7 @@ Timeline.propTypes = {
   createEventDay: propTypes.string.isRequired,
   handleNewEvent: propTypes.func.isRequired,
   handleNewAddress: propTypes.func.isRequired,
+  createEvent: propTypes.func.isRequired,
 };
 
 export default Timeline;
