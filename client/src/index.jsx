@@ -8,6 +8,7 @@ import Timeline from './Timeline';
 import TimelineInputBox from './TimelineInputBox';
 import StartDateBox from './StartDateBox';
 import EndDateBox from './EndDateBox';
+import CreateEventBox from './CreateEventBox';
 
 class App extends React.Component {
   constructor() {
@@ -140,9 +141,8 @@ class App extends React.Component {
             Make New Schedule
           </button>
         </div>
-        <Timeline 
+        <CreateEventBox
           timelineName={this.state.timelineName}
-          timelineData={this.state.timelineData}
           addNewEvent={this.addNewEvent} 
           numberOfDays={this.state.numberOfDays}
           onCreateDaySelect={this.onCreateDaySelect}
@@ -151,6 +151,7 @@ class App extends React.Component {
           handleNewAddress={this.handleNewAddress}
           createEvent={this.createEvent}
         />
+        <Timeline timelineData={this.state.timelineData} />
         <Search
           numberOfDays={this.state.numberOfDays}
           addNewEvent={this.addNewEvent}

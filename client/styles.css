@@ -7,7 +7,7 @@ body {
 .App {
   display: grid;
   grid-template-columns: 4fr 1fr;
-  grid-template-rows: 0.20fr 0.2fr 5fr;
+  grid-template-rows: 0.20fr 0.20fr 5fr;
   grid-template-areas: "navbar search" "createbox search" "timeline search";
 }
 
@@ -94,8 +94,14 @@ input {
   padding-left: 5px;
 }
 
+.createEvent {
+  padding: 5px;
+}
+
 .createBox {
   grid-area: createbox;
+  display: flex;
+  align-items: flex-end;
   justify-content: space-around;
   padding: 5px;
 }
