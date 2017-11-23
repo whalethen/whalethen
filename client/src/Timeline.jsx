@@ -6,6 +6,7 @@ import CreateEventBox from './CreateEventBox';
 
 const Timeline = (props) => {
   const {
+    timelineName,
     timelineData,
     addNewEvent,
     numberOfDays,
@@ -21,6 +22,7 @@ const Timeline = (props) => {
       {/* <div className="timelineTitle">Timeline</div> */}
       <div>
         <CreateEventBox
+          timelineName={timelineName}
           addNewEvent={addNewEvent}
           numberOfDays={numberOfDays}
           onCreateDaySelect={onCreateDaySelect}
@@ -38,6 +40,7 @@ const Timeline = (props) => {
 };
 
 Timeline.propTypes = {
+  timelineName: propTypes.string.isRequired,
   timelineData: propTypes.instanceOf(Array).isRequired,
   addNewEvent: propTypes.func.isRequired,
   numberOfDays: propTypes.number.isRequired,

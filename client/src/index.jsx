@@ -141,6 +141,7 @@ class App extends React.Component {
           </button>
         </div>
         <Timeline 
+          timelineName={this.state.timelineName}
           timelineData={this.state.timelineData}
           addNewEvent={this.addNewEvent} 
           numberOfDays={this.state.numberOfDays}
