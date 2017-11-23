@@ -132,7 +132,7 @@ input {
 .timeline {
   display: flex;
   grid-area: timeline;
-  height: 90vh;
+  height: 85vh;
   flex: 1;
   overflow: auto;
 }
