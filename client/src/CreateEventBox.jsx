@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 const CreateEventBox = (props) => {
   const {
@@ -7,6 +8,7 @@ const CreateEventBox = (props) => {
     onCreateDaySelect,
     createEventDay,
   } = props;
+
   const daysArr = ['Choose Day'];
   for (let i = 1; i <= numberOfDays; i += 1) {
     daysArr.push(`Day ${i}`);
@@ -14,6 +16,10 @@ const CreateEventBox = (props) => {
 
   return (
     <div>
+      <div>
+        <input />
+      </div>
+
       <div>
         <input />
       </div>
@@ -34,6 +40,13 @@ const CreateEventBox = (props) => {
       </div>
     </div>
   );
+};
+
+CreateEventBox.propTypes = {
+  addNewEvent: propTypes.func.isRequired,
+  numberOfDays: propTypes.number.isRequired,
+  onCreateDaySelect: propTypes.func.isRequired,
+  createEventDay: propTypes.number.isRequired,
 };
 
 export default CreateEventBox;

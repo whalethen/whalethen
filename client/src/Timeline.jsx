@@ -33,6 +33,10 @@ const Timeline = (props) => {
 
 Timeline.propTypes = {
   timelineData: propTypes.instanceOf(Array).isRequired,
+  addNewEvent: propTypes.func.isRequired,
+  numberOfDays: propTypes.number.isRequired,
+  onCreateDaySelect: propTypes.func.isRequired,
+  createEventDay: propTypes.number.isRequired,
 };
 
 export default Timeline;
