@@ -7,8 +7,8 @@ body {
 .App {
   display: grid;
   grid-template-columns: 4fr 1fr;
-  grid-template-rows: 0.20fr 5fr;
-  grid-template-areas: "navbar search" "timeline search";
+  grid-template-rows: 0.20fr 0.2fr 5fr;
+  grid-template-areas: "navbar search" "createbox search" "timeline search";
 }
 
 .container {
@@ -92,6 +92,12 @@ body {
 input {
   border-radius: 5px;
   padding-left: 5px;
+}
+
+.createBox {
+  grid-area: createbox;
+  justify-content: space-around;
+  padding: 5px;
 }
 
 .timelineParams {

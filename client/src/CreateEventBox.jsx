@@ -19,7 +19,7 @@ const CreateEventBox = (props) => {
   }
 
   return (
-    <div className="createBox">
+    <div className="container createBox">
       <h3>{timelineName}</h3>
       <label className="createEvent" htmlFor="createEvent">
         <div>
