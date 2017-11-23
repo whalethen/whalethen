@@ -20,6 +20,8 @@ class App extends React.Component {
       numberOfDays: 4,
       timelineId: 1234, // temp until we get a way to produce these
       createEventDay: '',
+      newEvent: '',
+      newEventAddress: '',
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -27,6 +29,8 @@ class App extends React.Component {
     this.addNewEvent = this.addNewEvent.bind(this);
     this.getTrip = this.getTrip.bind(this);
     this.onCreateDaySelect = this.onCreateDaySelect.bind(this);
+    this.handleNewEvent = this.handleNewEvent.bind(this);
+    this.handleNewAddress = this.handleNewAddress.bind(this);
   }
   componentDidMount() {
     // on init function to make get request to server
@@ -68,6 +72,18 @@ class App extends React.Component {
         });
       })
       .catch(err => console.error(err));
+  }
+
+  handleNewEvent() {
+    this.setState({
+      newEvent: e.target.value,
+    });
+  }
+
+  handleNewAddress() {
+    this.setState({
+      newEventAddress: e.target.value,
+    });
   }
 
   addNewEvent(event, selectedDay) {
@@ -116,6 +132,8 @@ class App extends React.Component {
           numberOfDays={this.state.numberOfDays}
           onCreateDaySelect={this.onCreateDaySelect}
           createEventDay={this.state.createEventDay}
+          handleNewEvent={this.handleNewEvent}
+          handleNewAddress={this.handleNewAddress}
         />
         <Search
           numberOfDays={this.state.numberOfDays}

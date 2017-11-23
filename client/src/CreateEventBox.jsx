@@ -17,11 +17,15 @@ const CreateEventBox = (props) => {
   return (
     <div>
       <div>
-        <input />
+        <input
+          placeholder="enter an event"
+        />
       </div>
 
       <div>
-        <input />
+        <input
+          placeholder="enter an address"
+        />
       </div>
 
       <div>
@@ -46,7 +50,7 @@ CreateEventBox.propTypes = {
   addNewEvent: propTypes.func.isRequired,
   numberOfDays: propTypes.number.isRequired,
   onCreateDaySelect: propTypes.func.isRequired,
-  createEventDay: propTypes.number.isRequired,
+  createEventDay: propTypes.string.isRequired,
 };
 
 export default CreateEventBox;
