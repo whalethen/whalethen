@@ -1,6 +1,7 @@
 const request = require('request-promise');
-const config = require('../config/config.js');
+// const config = require('../config/config.js');
 const _ = require('lodash');
+require('dotenv').config();
 
 const formatCoordinates = ({ results }) => {
   const coorsObj = results[0].geometry.location;
@@ -12,7 +13,7 @@ const getCoordinates = (location) => {
     method: 'GET',
     url: 'https://maps.googleapis.com/maps/api/geocode/json',
     qs: { address: location },
-    params: { key: config.mapsApi },
+    params: { key: process.env.MAP_API },
     json: true,
   };
   return request(options);
@@ -36,7 +37,7 @@ const placesApi = (location, query, distance = 32000) => {
       location,
       radius: distance,
       keyword: query,
-      key: config.mapsApi,
+      key: process.env.MAP_API,
     },
     json: true,
   };
@@ -69,6 +70,3 @@ module.exports.getCoordinates = getCoordinates;
 // placesApi('mountain view', 'hiking')
 //   .then(result => console.log('success: ', result))
 //   .catch(err => console.error('fail: ', err));
-
-
-
