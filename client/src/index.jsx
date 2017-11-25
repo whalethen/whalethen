@@ -15,11 +15,11 @@ class App extends React.Component {
     super();
     this.state = {
       timelineData: [],
-      timelineName: 'test', // temp until we get some more data built up
+      timelineName: 'testTimeline', // temp until we get some more data built up
       startDate: '',
       endDate: '',
-      numberOfDays: 4,
-      timelineId: 1234, // temp until we get a way to produce these
+      numberOfDays: 0,
+      timelineId: 'S1nnbsNlG', // temp until we get a way to produce these
       createEventDay: '',
       newEvent: '',
       newEventAddress: '',
@@ -66,6 +66,7 @@ class App extends React.Component {
   getTrip() {
     axios.get(`timeline/${this.state.timelineName}/${this.state.timelineId}`)
       .then(({ data }) => {
+        console.log(data)
         this.setState({
           timelineData: data,
           numberOfDays: data.length,
@@ -89,8 +90,6 @@ class App extends React.Component {
   }
 
   addNewEvent(event, selectedDay) {
-    // input: event => {name, type}
-    console.log('new event gooo')
     const day = Number(selectedDay.slice(4));
     axios.post('/entry', {
       event,
@@ -147,7 +146,7 @@ class App extends React.Component {
         </div>
         <CreateEventBox
           timelineName={this.state.timelineName}
-          addNewEvent={this.addNewEvent} 
+          addNewEvent={this.addNewEvent}
           numberOfDays={this.state.numberOfDays}
           onCreateDaySelect={this.onCreateDaySelect}
           createEventDay={this.state.createEventDay}
