@@ -14,6 +14,7 @@ app.use(express.static(`${__dirname}/../client/`));
 app.options('/', (request, response) => response.json('GET,POST,PUT,GET'));
 
 app.get('/timeline/:timelineName/:timelineId', (request, response) => {
+  console.log(request.params)
   // get route with based on timeline id endpoint. Should
   // allow for the access to the id tag via req.params as
   // shown in the current response

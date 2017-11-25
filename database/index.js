@@ -25,7 +25,7 @@ const eventSchema = mongoose.Schema({
 
 const daySchema = mongoose.Schema({
   day: Number,
-  timelineId: Number,
+  timelineId: String,
   timelineName: String,
   events: [eventSchema],
 });

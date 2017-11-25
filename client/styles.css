@@ -27,9 +27,7 @@ body {
   border: 1px solid black;
 }
 
-.searchComponent {
-
-}
+.searchComponent {}
 
 .searchList {
   /*min-height: min-content;*/
@@ -132,7 +130,7 @@ input {
 .timeline {
   display: flex;
   grid-area: timeline;
-  height: 85vh;
+  height: 87vh;
   flex: 1;
   overflow: auto;
 }
