@@ -21,7 +21,7 @@ app.get('/timeline/:timelineName/:timelineId', (request, response) => {
   db.getTimelineById(request.params.timelineId)
     .then(timeline => response.json(timeline))
     .tapCatch(err => console.error(err))
-    .catch(() => response.status(409).end());
+    .catch(() => response.sendStatus(409));
 });
 
 app.post('/timeline', ({ body }, response) => {
