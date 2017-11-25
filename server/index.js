@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const api = require('./placesApi.js');
 const db = require('../database/');
+require('dotenv').config();
+
 
 const app = express();
 
@@ -14,14 +16,10 @@ app.use(express.static(`${__dirname}/../client/`));
 app.options('/', (request, response) => response.json('GET,POST,PUT,GET'));
 
 app.get('/timeline/:timelineName/:timelineId', (request, response) => {
-  console.log(request.params)
-  // get route with based on timeline id endpoint. Should
-  // allow for the access to the id tag via req.params as
-  // shown in the current response
   db.getTimelineById(request.params.timelineId)
     .then(timeline => response.json(timeline))
     .tapCatch(err => console.error(err))
-    .catch(() => response.sendStatus(409));
+    .catch(() => response.status(409).end());
 });
 
 app.post('/timeline', ({ body }, response) => {
@@ -59,7 +57,7 @@ app.get('/search', (request, response) => {
     .catch(() => response.sendStatus(409));
 });
 
-const port = 1128;
+const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

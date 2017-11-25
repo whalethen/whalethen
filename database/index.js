@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const Promise = require('bluebird');
 const mongo = require('mongodb');
+require('dotenv').config();
 
 Promise.promisifyAll(mongoose);
 Promise.promisifyAll(mongo);
 
-mongoose.connect('mongodb://localhost/whaleThen', { useMongoClient: true });
+mongoose.connect(process.env.DATABASE, { useMongoClient: true });
 const db = mongoose.connection;
 
 db.on('error', () => {
