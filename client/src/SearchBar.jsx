@@ -3,7 +3,18 @@ import propTypes from 'prop-types';
 
 const SearchBar = props => (
   <div className="searchBar">
-    <input />
+    <input
+      id="location"
+      type="text"
+      placeholder="location"
+      onKeyUp={props.handleLoc}
+    />
+    <input
+      id="category"
+      type="text"
+      placeholder="category"
+      onKeyUp={props.handleCat}
+    />
     <button className="searchSubmit" onClick={props.onSubmit}>Search</button>
   </div>
 );
