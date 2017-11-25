@@ -52,7 +52,9 @@ app.get('/search', (request, response) => {
   const { category, location } = request.query;
   // for triggering a search to the search api
   api.placesApi(location, category)
-    .then(result => response.json(result))
+    .then((result) => {
+      response.json(result);
+    })
     .tapCatch(err => console.error(err))
     .catch(() => response.sendStatus(409));
 });
