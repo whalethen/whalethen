@@ -1,0 +1,140 @@
+body {
+  margin: 0 auto;
+  box-sizing: border-box;
+  /*background: grey;*/
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 0.20fr 0.20fr 5fr;
+  grid-template-areas: "navbar search" "createbox search" "timeline search";
+}
+
+.container {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.day {
+  display: flex;
+  min-height: min-content;
+}
+
+.dayView {
+  padding: 5px;
+  width: 200px;
+  border: 1px solid black;
+}
+
+.searchComponent {}
+
+.searchList {
+  /*min-height: min-content;*/
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.searchBar {
+  margin-bottom: 20px;
+}
+
+.search {
+  display: flex;
+  grid-area: search;
+  align-content: stretch;
+  flex-direction: column;
+}
+
+.searchSubmit button {
+  padding-left: 1px;
+  text-align: center;
+}
+
+.searchEntry {
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.scrollbox {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  height: 85vh;
+}
+
+.startDate {
+  padding: 5px;
+}
+
+.endDate {
+  padding: 5px;
+}
+
+.title {
+  font-size: 30pt;
+  font-weight: bold;
+}
+
+.timelineName {
+  padding: 5px;
+}
+
+.inputBox {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+input {
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
+.createEvent {
+  padding: 5px;
+}
+
+.createEventName {
+  padding: 5px;
+}
+
+.createEventAddress {
+  padding: 5px;
+}
+
+.createBox {
+  grid-area: createbox;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+.timelineParams {
+  display: flex;
+  grid-area: navbar;
+  justify-content: space-around;
+}
+
+.timelineParams button {
+  background: white;
+  border-radius: 2px;
+  height: 33%;
+  align-self: center;
+}
+
+.timeline {
+  display: flex;
+  grid-area: timeline;
+  height: 85vh;
+  flex: 1;
+  overflow: auto;
+}
+
+.event {
+  margin: 5px;
+}

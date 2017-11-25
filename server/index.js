@@ -3,26 +3,37 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const api = require('./placesApi.js');
 const db = require('../database/');
+require('dotenv').config();
+
 
 const app = express();
 
-app.use(express.static(`${__dirname}/../client/`));
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(`${__dirname}/../client/`));
 
 app.options('/', (request, response) => response.json('GET,POST,PUT,GET'));
 
-app.get('/timeline/:timelineId', (request, response) => {
-  // get route with based on timeline id endpoint. Should
-  // allow for the access to the id tag via req.params as
-  // shown in the current response
-  response.send(request.params);
+app.get('/timeline/:timelineName/:timelineId', (request, response) => {
+  db.getTimelineById(request.params.timelineId)
+    .then(timeline => response.json(timeline))
+    .tapCatch(err => console.error(err))
+    .catch(() => response.status(409).end());
 });
 
-app.post('/entry', (request, response) => {
-  // for adding an extry to a day model
-  response.send('for adding an extry to a day model');
+app.post('/timeline', ({ body }, response) => {
+  db.addNewTimeline(body.timelineId, body.numberOfDays)
+    .then(() => response.sendStatus(200))
+    .tapCatch(err => console.error(err))
+    .catch(() => response.sendStatus(409));
+});
+
+app.post('/entry', ({ body }, response) => {
+  db.addNewEvent(body.event, body.timelineId, body.day)
+    .then(() => response.sendStatus(200))
+    .tapCatch(err => console.error(err))
+    .catch(() => response.sendStatus(409));
 });
 
 app.put('/entry', (request, response) => {
@@ -36,14 +47,17 @@ app.delete('/entry/:id', (request, response) => {
 });
 
 app.get('/search', (request, response) => {
+  const { category, location } = request.query;
   // for triggering a search to the search api
-  api.placesApi('chicago', 'food')
-    .then(result => response.json(result))
-    .catch(err => console.error(err));
+  api.placesApi(location, category)
+    .then((result) => {
+      response.json(result);
+    })
+    .tapCatch(err => console.error(err))
+    .catch(() => response.sendStatus(409));
 });
 
-
-const port = 1128;
+const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

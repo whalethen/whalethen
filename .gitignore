@@ -1,5 +1,7 @@
 ### node etc ###
 config.js
+package-lock.json
+.env
 
 # Logs
 logs
@@ -59,10 +61,14 @@ bower_components/
 
 # OS generated files #
 ######################
-.DS_Store
-.DS_Store?
+*.DS_Store
+*.DS_Store?
+
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Test Data #
+database/testDB_js.js
