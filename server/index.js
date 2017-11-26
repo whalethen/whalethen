@@ -5,7 +5,6 @@ const api = require('./placesApi.js');
 const db = require('../database/');
 require('dotenv').config();
 
-
 const app = express();
 
 app.use(cors());

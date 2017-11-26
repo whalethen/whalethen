@@ -21,6 +21,8 @@
 
 ## Usage
 
+#### Starting Development Environment
+
 Starting Webpack Server:
 ``` sh
 npm run react-dev
@@ -30,6 +32,47 @@ Starting Development Server:
 ``` sh
 npm run server-dev
 ```
+#### WhaleThen's RESTful api
+
+###### Get Requests
+
+Timeline:
+  - route: '/timeline/<timelineName>/<timelineId>'
+  - Recommended to use Axios query string syntax or url template literals
+  - response data will be on `data` key of the JSON object.
+    - contains an array of event objects  
+
+Search:
+  - route: '/search'
+  - Query string syntax (Axios query string syntax recommended)
+  - Required parameters include category and location
+  - response data will be on `data` key of the JSON object.
+    - contains an array of event objects
+
+###### Post Requests
+
+Timeline:
+  - route: '/timeline'
+  - Data Object should contain keys `timelineName`, `timelineId`, and `numberOfDays`
+  - status code 200 if successful
+  - status code 409 if failure
+
+Entry:
+  - route: '/entry'
+  - Data Object should contain keys `event`, `timelineId`, and `day`
+  - Event should be in the form of an object
+  - `timelineId` (String) should refer to timeline that event is to be added
+  - `day` (Number) should refer to the day of which the event should be added
+
+###### Put Requests
+
+Entry:
+  - route: '/entry'
+
+###### Delete Requests
+
+Entry:
+  - route: '/entry/<entryId>'
 
 ## Requirements
 
