@@ -34,7 +34,7 @@ npm run server-dev
 ```
 #### WhaleThen's RESTful api
 
-###### Get Requests
+##### Get Requests
 
 Timeline:
   - route: '/timeline/<timelineName>/<timelineId>'
@@ -49,7 +49,7 @@ Search:
   - response data will be on `data` key of the JSON object.
     - contains an array of event objects
 
-###### Post Requests
+##### Post Requests
 
 Timeline:
   - route: '/timeline'
@@ -64,12 +64,12 @@ Entry:
   - `timelineId` (String) should refer to timeline that event is to be added
   - `day` (Number) should refer to the day of which the event should be added
 
-###### Put Requests
+##### Put Requests
 
 Entry:
   - route: '/entry'
 
-###### Delete Requests
+##### Delete Requests
 
 Entry:
   - route: '/entry/<entryId>'
