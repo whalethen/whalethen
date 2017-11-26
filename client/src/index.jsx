@@ -6,6 +6,7 @@ import shortid from 'shortid';
 import Search from './Search';
 import Timeline from './Timeline';
 import TimelineInputBox from './TimelineInputBox';
+import TimelineLookUp from './TimelineLookUp';
 import StartDateBox from './StartDateBox';
 import EndDateBox from './EndDateBox';
 import CreateEventBox from './CreateEventBox';
@@ -29,6 +30,8 @@ class App extends React.Component {
     this.onEnter = this.onEnter.bind(this);
     this.addNewEvent = this.addNewEvent.bind(this);
     this.getTrip = this.getTrip.bind(this);
+    this.handleID = this.handleID.bind(this);
+    this.handleName = this.handleName.bind(this);
     this.onCreateDaySelect = this.onCreateDaySelect.bind(this);
     this.handleNewEvent = this.handleNewEvent.bind(this);
     this.handleNewAddress = this.handleNewAddress.bind(this);
@@ -48,6 +51,7 @@ class App extends React.Component {
 
   onSubmit() {
     this.setState({ timelineId: shortid.generate() }, () => {
+      console.log('hello on submit button');
       const start = moment(this.state.startDate);
       const end = moment(this.state.endDate);
       this.setState({ numberOfDays: end.diff(start, 'days') }, () => {
@@ -73,10 +77,10 @@ class App extends React.Component {
       createEventDay: e.target.value,
     });
   }
-
   getTrip() {
-    axios.get(`timeline/${this.state.timelineName}/${this.state.timelineId}`)
+    axios.get(`/timeline/${this.state.timelineName}/${this.state.timelineId}`)
       .then(({ data }) => {
+        console.log('data', data);
         this.setState({
           timelineData: data,
           numberOfDays: data.length,
@@ -85,6 +89,18 @@ class App extends React.Component {
         });
       })
       .catch(err => console.error(err));
+  }
+
+  handleID(e) {
+    this.setState({
+      timelineId: e.target.value,
+    });
+  }
+
+  handleName(e) {
+    this.setState({
+      timelineName: e.target.value,
+    });
   }
 
   handleNewEvent(e) {
@@ -153,6 +169,11 @@ class App extends React.Component {
           >
             Make New Schedule
           </button>
+          <TimelineLookUp
+            getTrip={this.getTrip}
+            handleID={this.handleID}
+            handleName={this.handleName}
+          />
         </div>
         <CreateEventBox
           timelineName={this.state.timelineName}
