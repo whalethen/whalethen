@@ -3,10 +3,6 @@ import axios from 'axios';
 import propTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import SearchList from './SearchList';
-<<<<<<< HEAD
-=======
-import Data from '../../sampleData';
->>>>>>> fix search file conflicts
 
 class Search extends React.Component {
   constructor(props) {
@@ -14,11 +10,7 @@ class Search extends React.Component {
     this.state = {
       locationSearch: '',
       termBar: '',
-<<<<<<< HEAD
       searchList: [],
-=======
-      searchList: Data.sampleData,
->>>>>>> fix search file conflicts
       selectedDay: '',
     };
 
