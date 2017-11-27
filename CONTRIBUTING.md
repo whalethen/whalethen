@@ -3,7 +3,7 @@
 ## General Workflow
 
 1. Fork the repo
-1. Cut a namespaced feature branch from master
+1. Cut a namespaced feature branch from development
 1. Make commits to your feature branch. Prefix each commit like so:
 1. When you've finished with your fix or feature, Rebase upstream changes into your branch. submit a pull request directly to master. Include a description of your changes.
 1. Your pull request will be reviewed by another maintainer. The point of code reviews is to help keep the codebase clean and of high quality and, equally as important, to help you grow as a programmer. If your code reviewer requests you make a change you don't understand, ask them why.
@@ -17,7 +17,7 @@
 Use github’s interface to make a fork of the repo, then add that repo as an upstream remote:
 
 ```
-git remote add upstream https://github.com/organization/<NAME_OF_REPO>.git
+git remote add upstream https://github.com/whalethen/whalethen.git
 ```
 
 ### Cut a namespaced feature branch from master
@@ -37,7 +37,7 @@ These commands will help you do this:
 git checkout -b `your-branch-name`
 ```
 
-### Make commits to your feature branch. 
+### Make commits to your feature branch.
 
 Prefix each commit like so
   - (feat) Add a new feature
@@ -66,7 +66,7 @@ changes to the master branch into yours by running this command
 from your branch:
 
 ```bash
-git pull --rebase upstream master
+git pull --rebase upstream development
 ```
 
 This will start the rebase process. You must commit all of your changes

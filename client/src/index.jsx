@@ -136,12 +136,6 @@ class App extends React.Component {
     this.addNewEvent(eventObj, this.state.createEventDay);
   }
 
-  countDays() {
-    const start = moment(this.state.startDate);
-    const end = moment(this.state.endDate);
-    this.setState({ numberOfDays: end.diff(start, 'days') });
-  }
-
   render() {
     return (
       <div className="App">

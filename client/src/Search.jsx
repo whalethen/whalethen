@@ -21,9 +21,9 @@ class Search extends React.Component {
   }
   onSubmit() {
     axios.get('/search', { params: { category: this.state.termBar, location: this.state.locationSearch } })
-      .then((response) => {
+      .then(({ data }) => {
         this.setState({
-          searchList: response.data,
+          searchList: data,
         });
       })
       .catch(err => console.error(err));
