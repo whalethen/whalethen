@@ -32,7 +32,7 @@ const CreateEventBox = (props) => {
             onChange={handleNewEvent}
           />
         </span>
-
+      
         <span>
           {` Create Event Address: `}
           <input
