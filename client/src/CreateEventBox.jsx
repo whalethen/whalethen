@@ -27,7 +27,6 @@ const CreateEventBox = (props) => {
       </div>
       <label className="createEvent" htmlFor="createEvent">
         <div>
-          Create Event:
           <input
             id="createEventName"
             type="text"
@@ -38,7 +37,6 @@ const CreateEventBox = (props) => {
         </div>
 
         <div>
-          Create Event Address:
           <input
             id="createEventAddress"
             type="text"
