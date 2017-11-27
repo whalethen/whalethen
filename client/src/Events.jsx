@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import axios from 'axios';
 
 
 class Events extends React.Component {
@@ -9,18 +10,28 @@ class Events extends React.Component {
 			votes: this.props.event.votes,
 		}
 		this.updateVotes = this.updateVotes.bind(this);
+		this.patchVotesInDB = this.patchVotesInDB.bind(this);
+	}
+
+	patchVotesInDB() {
+		axios.put('/entry', {
+			timelineId: this.props.timelineId,
+			day: this.props.day.day,
+			eventId: this.props.event._id,
+			votes: this.state.votes,
+		})
 	}
 
 	updateVotes(e) {
-		console.log('hey this event is what Brian was looking for', this.props);
+		console.log( this.props.event);
 		if (e.target.value === "+") {
 			this.setState({
 				votes: this.state.votes += 1,
-			});
+			}, this.patchVotesInDB);
 		} else {
 			this.setState({
 				votes: this.state.votes -= 1,
-			});
+			}, this.patchVotesInDB);
 		}
 
 	}
