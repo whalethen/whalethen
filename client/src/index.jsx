@@ -33,6 +33,7 @@ class App extends React.Component {
     this.handleID = this.handleID.bind(this);
     this.handleName = this.handleName.bind(this);
     this.onCreateDaySelect = this.onCreateDaySelect.bind(this);
+    this.onCreateEnter = this.onCreateEnter.bind(this);
     this.handleNewEvent = this.handleNewEvent.bind(this);
     this.handleNewAddress = this.handleNewAddress.bind(this);
     this.createEvent = this.createEvent.bind(this);
@@ -68,6 +69,12 @@ class App extends React.Component {
   onEnter(event) {
     if (event.key === 'Enter') {
       this.onSubmit();
+    }
+  }
+
+  onCreateEnter(event) {
+    if (event.key === 'Enter') {
+      this.createEvent();
     }
   }
 
@@ -171,6 +178,7 @@ class App extends React.Component {
           addNewEvent={this.addNewEvent}
           numberOfDays={this.state.numberOfDays}
           onCreateDaySelect={this.onCreateDaySelect}
+          onCreateEnter={this.onCreateEnter}
           createEventDay={this.state.createEventDay}
           handleNewEvent={this.handleNewEvent}
           handleNewAddress={this.handleNewAddress}
