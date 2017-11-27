@@ -152,10 +152,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <h1 className="title">WhaleThen</h1>
         <div className="container timelineParams">
           <div className="title">WhaleThen</div>
           <div>{this.state.timelineName}</div>
           <div>{this.state.timelineId}</div>
+
           <TimelineInputBox
             onInput={this.onInputChange}
             onEnter={this.onEnter}
@@ -172,8 +174,9 @@ class App extends React.Component {
             className="scheduleSubmit"
             onClick={() => this.onSubmit()}
           >
-            Make New Schedule
+            New Schedule
           </button>
+          
           <TimelineLookUp
             getTrip={this.getTrip}
             handleID={this.handleID}
@@ -192,6 +195,11 @@ class App extends React.Component {
           handleNewEvent={this.handleNewEvent}
           handleNewAddress={this.handleNewAddress}
           createEvent={this.createEvent}
+        />
+        <TimelineLookUp
+          getTrip={this.getTrip}
+          handleID={this.handleID}
+          handleName={this.handleName}
         />
         <Timeline timelineData={this.state.timelineData} timelineId={this.state.timelineId} />
         <Search

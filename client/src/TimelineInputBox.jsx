@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const TimelineInputBox = ({ onInput, onEnter }) => (
-  <div className="inputBox">
+  <div className="inputBox label">
     <label className="timelineName" htmlFor="timelineName">
     Timeline Name:
     <input
