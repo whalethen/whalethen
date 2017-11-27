@@ -1,4 +1,4 @@
-module.exports.sampleData = [
+module.exports.sampleSearchData = [
   {
     name: 'P&O Cruises Australia',
     rating: 2.4,
