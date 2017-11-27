@@ -26,6 +26,7 @@ build/
 dist/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -39,6 +40,9 @@ dist/
 >>>>>>> update ignore
 =======
 >>>>>>> update ignore
+=======
+
+>>>>>>> 55cca100f550c6a8b612d16ddda5c2f39ea9c671
 # Dependency directorys
 # Deployed apps should consider commenting these lines out:
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
