@@ -19,11 +19,11 @@ const CreateEventBox = (props) => {
   }
 
   return (
-    <div className="container createBox">
+    <div className="container createBox label">
       <h3>{timelineName}</h3>
       <label className="createEvent" htmlFor="createEvent">
         <span>
-          Create Event:
+          {`Create Event:  `}
           <input
             id="createEventName"
             type="text"
@@ -32,9 +32,9 @@ const CreateEventBox = (props) => {
             onChange={handleNewEvent}
           />
         </span>
-
+      
         <span>
-          Create Event Address:
+          {` Create Event Address: `}
           <input
             id="createEventAddress"
             type="text"
