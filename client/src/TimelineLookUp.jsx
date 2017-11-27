@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const TimelineLookUp = ({ handleID, handleName, getTrip }) => (
-  <div className="container timelineLookUp">
+  <div className="inputBox">
     <label className="timelineLookUp" htmlFor="timelineLookUp">
       Timeline Look Up:
     <input
@@ -19,7 +19,7 @@ const TimelineLookUp = ({ handleID, handleName, getTrip }) => (
         onChange={handleName}
         placeholder="enter Name"
       />
-      <button className="searchTimeline" onClick={getTrip}>Search ID</button>
+      <button className="searchSubmit" onClick={getTrip}>Search ID</button>
     </label>
   </div>
 );
