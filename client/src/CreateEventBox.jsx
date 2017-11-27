@@ -26,7 +26,7 @@ const CreateEventBox = (props) => {
         <h4>{timelineId}</h4>
       </div>
       <label className="createEvent" htmlFor="createEvent">
-        <span>
+        <div>
           Create Event:
           <input
             id="createEventName"
@@ -35,9 +35,9 @@ const CreateEventBox = (props) => {
             placeholder="enter an event"
             onChange={handleNewEvent}
           />
-        </span>
+        </div>
 
-        <span>
+        <div>
           Create Event Address:
           <input
             id="createEventAddress"
@@ -46,22 +46,22 @@ const CreateEventBox = (props) => {
             placeholder="enter an address"
             onChange={handleNewAddress}
           />
-        </span>
+        </div>
 
-        <span>
+        <div>
           <select className="selectDays" onChange={onCreateDaySelect}>
             {daysArr.map(day => <option value={day} key={day}>{day}</option>)}
           </select>
-        </span>
+        </div>
 
-        <span>
+        <div>
           <button
             className="addEvent"
             onClick={createEvent}
           >
                 Create Event
           </button>
-        </span>
+        </div>
       </label>
     </div>
   );
