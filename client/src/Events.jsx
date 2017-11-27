@@ -23,7 +23,6 @@ class Events extends React.Component {
 	}
 
 	updateVotes(e) {
-		console.log( this.props.event);
 		if (e.target.value === "+") {
 			this.setState({
 				votes: this.state.votes += 1,

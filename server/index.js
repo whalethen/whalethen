@@ -40,7 +40,6 @@ app.put('/entry', (request, response) => {
   db.updateVotes(request.body.timelineId, request.body.day, request.body.eventId, request.body.votes)
     .then(() => response.sendStatus(200))
     .catch(() => response.sendStatus(409));
-  // response.send('for editing a day entry in day model');
 });
 
 app.delete('/entry/:id', (request, response) => {
