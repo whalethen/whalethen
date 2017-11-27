@@ -160,7 +160,7 @@ class App extends React.Component {
           handleNewAddress={this.handleNewAddress}
           createEvent={this.createEvent}
         />
-        <Timeline timelineData={this.state.timelineData} />
+        <Timeline timelineData={this.state.timelineData} timelineId={this.state.timelineId} />
         <Search
           numberOfDays={this.state.numberOfDays}
           addNewEvent={this.addNewEvent}
