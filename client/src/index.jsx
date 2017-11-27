@@ -32,6 +32,7 @@ class App extends React.Component {
     this.getTrip = this.getTrip.bind(this);
     this.handleID = this.handleID.bind(this);
     this.handleName = this.handleName.bind(this);
+    this.onLookupEnter = this.onLookupEnter.bind(this);
     this.onCreateDaySelect = this.onCreateDaySelect.bind(this);
     this.onCreateEnter = this.onCreateEnter.bind(this);
     this.handleNewEvent = this.handleNewEvent.bind(this);
@@ -83,6 +84,13 @@ class App extends React.Component {
       createEventDay: e.target.value,
     });
   }
+
+  onLookupEnter(event) {
+    if (event.key === 'Enter') {
+      this.getTrip();
+    }
+  }
+
   getTrip() {
     axios.get(`/timeline/${this.state.timelineName}/${this.state.timelineId}`)
       .then(({ data }) => {
@@ -170,6 +178,7 @@ class App extends React.Component {
             getTrip={this.getTrip}
             handleID={this.handleID}
             handleName={this.handleName}
+            onLookupEnter={this.onLookupEnter}
           />
         </div>
         <CreateEventBox
