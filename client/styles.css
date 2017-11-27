@@ -11,6 +11,17 @@ body {
   grid-template-areas: "navbar search" "createbox search" "timeline search";
 }
 
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 .container {
   border: 1px solid black;
   padding: 10px;
@@ -20,6 +31,7 @@ body {
   display: flex;
   min-height: min-content;
 }
+
 
 .dayView {
   padding: 5px;
