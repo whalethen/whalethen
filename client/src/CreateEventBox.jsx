@@ -8,6 +8,7 @@ const CreateEventBox = (props) => {
     numberOfDays,
     onCreateDaySelect,
     createEventDay,
+    onCreateEnter,
     handleNewEvent,
     handleNewAddress,
     createEvent,
@@ -41,6 +42,7 @@ const CreateEventBox = (props) => {
             name="createEventAddress"
             placeholder="enter an address"
             onChange={handleNewAddress}
+            onKeyUp={event => onCreateEnter(event)}
           />
         </span>
 
@@ -69,6 +71,7 @@ CreateEventBox.propTypes = {
   numberOfDays: propTypes.number.isRequired,
   onCreateDaySelect: propTypes.func.isRequired,
   createEventDay: propTypes.string.isRequired,
+  onCreateEnter: propTypes.func.isRequired,
   handleNewEvent: propTypes.func.isRequired,
   handleNewAddress: propTypes.func.isRequired,
   createEvent: propTypes.func.isRequired,
