@@ -2,9 +2,9 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const TimelineLookUp = ({ handleID, handleName, getTrip }) => (
-  <div className="inputBox">
+  <div className="inputBox label">
     <label className="timelineLookUp" htmlFor="timelineLookUp">
-      Timeline Look Up:
+      {`Timeline Look Up: `}
     <input
       id="timelineLookUp"
       type="text"

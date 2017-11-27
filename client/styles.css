@@ -22,11 +22,24 @@ body {
   background: white;
 }
 
+.dayTitle {
+  text-decoration: underline;
+  text-align: center;
+}
 
 .dayView {
   padding: 5px;
   width: 200px;
   border: 1px solid black;
+}
+
+.event {
+  padding: .3em;
+}
+
+.label {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.15em;
 }
 
 .searchComponent {}
@@ -47,6 +60,7 @@ body {
   grid-area: search;
   align-content: stretch;
   flex-direction: column;
+  font-family: 'Boogaloo', cursive;
 }
 
 .searchSubmit button {
@@ -81,10 +95,10 @@ body {
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 2;
-  font-size: 30pt;
-  font-weight: bold;
   text-align: center;
-
+  font-size: 32pt;
+  font-weight: bold;
+  font-family: 'Sacramento', cursive;
 }
 
 .timelineName {
@@ -95,7 +109,7 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  padding: 5px;
+  padding: 2px;
 }
 
 input {
@@ -152,6 +166,8 @@ input {
   height: 85vh;
   flex: 1;
   overflow: auto;
+  font-size: 1.1em;
+  font-family: 'Boogaloo', cursive;
 }
 
 .event {

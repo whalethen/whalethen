@@ -3,8 +3,11 @@ import propTypes from 'prop-types';
 
 const CreateEventBox = (props) => {
   const {
+    timelineName,
+    addNewEvent,
     numberOfDays,
     onCreateDaySelect,
+    createEventDay,
     handleNewEvent,
     handleNewAddress,
     createEvent,
@@ -16,9 +19,11 @@ const CreateEventBox = (props) => {
   }
 
   return (
-    <div className="container createBox">
+    <div className="container createBox label">
+      <h3>{timelineName}</h3>
       <label className="createEvent" htmlFor="createEvent">
-        <div>
+        <span>
+          {`Create Event:  `}
           <input
             id="createEventName"
             type="text"
@@ -26,9 +31,10 @@ const CreateEventBox = (props) => {
             placeholder="enter an event"
             onChange={handleNewEvent}
           />
-        </div>
-
-        <div>
+        </span>
+      
+        <span>
+          {` Create Event Address: `}
           <input
             id="createEventAddress"
             type="text"
@@ -36,30 +42,33 @@ const CreateEventBox = (props) => {
             placeholder="enter an address"
             onChange={handleNewAddress}
           />
-        </div>
+        </span>
 
-        <div>
+        <span>
           <select className="selectDays" onChange={onCreateDaySelect}>
             {daysArr.map(day => <option value={day} key={day}>{day}</option>)}
           </select>
-        </div>
+        </span>
 
-        <div>
+        <span>
           <button
             className="addEvent"
             onClick={createEvent}
           >
                 Create Event
           </button>
-        </div>
+        </span>
       </label>
     </div>
   );
 };
 
 CreateEventBox.propTypes = {
+  timelineName: propTypes.string.isRequired,
+  addNewEvent: propTypes.func.isRequired,
   numberOfDays: propTypes.number.isRequired,
   onCreateDaySelect: propTypes.func.isRequired,
+  createEventDay: propTypes.string.isRequired,
   handleNewEvent: propTypes.func.isRequired,
   handleNewAddress: propTypes.func.isRequired,
   createEvent: propTypes.func.isRequired,
