@@ -35,7 +35,7 @@ const Day = mongoose.model('Day', daySchema);
 const Event = mongoose.model('Event', eventSchema);
 
 const updateVotes = (timelineId, day, eventId, votes) => {
-  return Day.find({
+  return Day.findAsync({
     day: day,
     timelineId: timelineId, 
     })
