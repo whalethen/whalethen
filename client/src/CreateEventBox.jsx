@@ -3,12 +3,10 @@ import propTypes from 'prop-types';
 
 const CreateEventBox = (props) => {
   const {
-    timelineName,
-    timelineId,
-    addNewEvent,
+    // addNewEvent,
     numberOfDays,
     onCreateDaySelect,
-    createEventDay,
+    // createEventDay,
     handleNewEvent,
     handleNewAddress,
     createEvent,
@@ -21,10 +19,6 @@ const CreateEventBox = (props) => {
 
   return (
     <div className="container createBox">
-      <div>
-        <h3>{timelineName}</h3>
-        <h4>{timelineId}</h4>
-      </div>
       <label className="createEvent" htmlFor="createEvent">
         <div>
           <input
@@ -66,12 +60,10 @@ const CreateEventBox = (props) => {
 };
 
 CreateEventBox.propTypes = {
-  timelineName: propTypes.string.isRequired,
-  timelineId: propTypes.string.isRequired,
-  addNewEvent: propTypes.func.isRequired,
+  // addNewEvent: propTypes.func.isRequired,
   numberOfDays: propTypes.number.isRequired,
   onCreateDaySelect: propTypes.func.isRequired,
-  createEventDay: propTypes.string.isRequired,
+  // createEventDay: propTypes.string.isRequired,
   handleNewEvent: propTypes.func.isRequired,
   handleNewAddress: propTypes.func.isRequired,
   createEvent: propTypes.func.isRequired,
