@@ -25,7 +25,7 @@ app.get('/timeline/:timelineName/:timelineId', (request, response) => {
 app.post('/timeline', ({ body }, response) => {
   db.addNewTimeline(body.timelineId, body.numberOfDays, body.timelineName)
     .then(() => response.sendStatus(200))
-    // .tapCatch(err => console.error(err))
+    .tapCatch(err => console.error(err))
     .catch(() => response.sendStatus(409));
 });
 
@@ -39,6 +39,7 @@ app.post('/entry', ({ body }, response) => {
 app.put('/entry', (request, response) => {
   db.updateVotes(request.body.timelineId, request.body.day, request.body.eventId, request.body.votes)
     .then(() => response.sendStatus(200))
+    .tapCatch(err => console.error(err))
     .catch(() => response.sendStatus(409));
 });
 
