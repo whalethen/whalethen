@@ -40,9 +40,7 @@ const updateVotes = (timelineId, day, eventId, votes) => {
     timelineId: timelineId, 
     })
   .then(results => {
-    console.log("this is the database results", results[0].events.id(eventId));
-    var event = results[0].events.id(eventId)
-    console.log("this is the votes?", votes)
+    let event = results[0].events.id(eventId)
     event.votes = votes;
     return results[0].save((err => {
       if (err) {
@@ -58,7 +56,7 @@ const addNewTimeline = (timelineId, numberOfDays, timelineName) => {
     const newDay = new Day({ day, timelineId, timelineName });
     timeline.push(newDay);
   }
-  return Promise.map(timeline, day => day.saveAsync())
+  return Promise.map(timeline, day => day.saveAsync());
 };
 
 const getTimelineById = (timelineId) => {
