@@ -25,6 +25,7 @@ coverage
 build/
 dist/
 
+<<<<<<< HEAD
 
 
 
@@ -34,6 +35,8 @@ dist/
 
 
 
+=======
+>>>>>>> update ignore
 =======
 >>>>>>> update ignore
 # Dependency directorys
