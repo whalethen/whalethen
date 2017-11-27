@@ -26,10 +26,6 @@ build/
 dist/
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> cd3d36284d7981634aae773d45246a0bd8514c73
 # Dependency directorys
 # Deployed apps should consider commenting these lines out:
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
