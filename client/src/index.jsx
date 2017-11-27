@@ -165,6 +165,7 @@ class App extends React.Component {
         </div>
         <CreateEventBox
           timelineName={this.state.timelineName}
+          timelineId={this.state.timelineId}
           addNewEvent={this.addNewEvent}
           numberOfDays={this.state.numberOfDays}
           onCreateDaySelect={this.onCreateDaySelect}

@@ -3,11 +3,8 @@ import propTypes from 'prop-types';
 
 const CreateEventBox = (props) => {
   const {
-    timelineName,
-    addNewEvent,
     numberOfDays,
     onCreateDaySelect,
-    createEventDay,
     handleNewEvent,
     handleNewAddress,
     createEvent,
@@ -20,10 +17,8 @@ const CreateEventBox = (props) => {
 
   return (
     <div className="container createBox">
-      <h3>{timelineName}</h3>
       <label className="createEvent" htmlFor="createEvent">
-        <span>
-          Create Event:
+        <div>
           <input
             id="createEventName"
             type="text"
@@ -31,10 +26,9 @@ const CreateEventBox = (props) => {
             placeholder="enter an event"
             onChange={handleNewEvent}
           />
-        </span>
+        </div>
 
-        <span>
-          Create Event Address:
+        <div>
           <input
             id="createEventAddress"
             type="text"
@@ -42,33 +36,30 @@ const CreateEventBox = (props) => {
             placeholder="enter an address"
             onChange={handleNewAddress}
           />
-        </span>
+        </div>
 
-        <span>
+        <div>
           <select className="selectDays" onChange={onCreateDaySelect}>
             {daysArr.map(day => <option value={day} key={day}>{day}</option>)}
           </select>
-        </span>
+        </div>
 
-        <span>
+        <div>
           <button
             className="addEvent"
             onClick={createEvent}
           >
                 Create Event
           </button>
-        </span>
+        </div>
       </label>
     </div>
   );
 };
 
 CreateEventBox.propTypes = {
-  timelineName: propTypes.string.isRequired,
-  addNewEvent: propTypes.func.isRequired,
   numberOfDays: propTypes.number.isRequired,
   onCreateDaySelect: propTypes.func.isRequired,
-  createEventDay: propTypes.string.isRequired,
   handleNewEvent: propTypes.func.isRequired,
   handleNewAddress: propTypes.func.isRequired,
   createEvent: propTypes.func.isRequired,
