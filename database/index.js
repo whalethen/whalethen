@@ -34,6 +34,22 @@ const daySchema = mongoose.Schema({
 const Day = mongoose.model('Day', daySchema);
 const Event = mongoose.model('Event', eventSchema);
 
+const updateVotes = (timelineId, day, eventId, votes) => {
+  return Day.find({
+    day: day,
+    timelineId: timelineId, 
+    })
+  .then(results => {
+    let event = results[0].events.id(eventId)
+    event.votes = votes;
+    return results[0].save((err => {
+      if (err) {
+        console.error(err);
+      }
+    }))
+  });  
+}
+
 const addNewTimeline = (timelineId, numberOfDays, timelineName) => {
   const timeline = [];
   for (let day = 1; day <= numberOfDays; day += 1) {
@@ -68,3 +84,4 @@ module.exports.getTimelineByName = getTimelineByName;
 module.exports.addNewTimeline = addNewTimeline;
 module.exports.addNewEvent = addNewEvent;
 module.exports.addEventToDay = addEventToDay;
+module.exports.updateVotes = updateVotes;
