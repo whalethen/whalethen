@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 const EndDateBox = ({ onInput, onEnter }) => (
   <div className="inputBox">
-    <label className="endDate" htmlFor="endDate">
+    <label className="container endDate" htmlFor="endDate">
       End Date:
       <input
         id="endDate"
