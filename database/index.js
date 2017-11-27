@@ -42,7 +42,7 @@ const updateVotes = (timelineId, day, eventId, votes) => {
   .then(results => {
     let event = results[0].events.id(eventId)
     event.votes = votes;
-    return results[0].save((err => {
+    return results[0].saveAsync((err => {
       if (err) {
         console.error(err);
       }
