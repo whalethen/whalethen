@@ -37,7 +37,7 @@ npm run server-dev
 ##### Get Requests
 
 Timeline:
-  - route: '/timeline/<timelineName>/<timelineId>'
+  - route: '/timeline/:timelineName/:timelineId'
   - Recommended to use Axios query string syntax or url template literals
   - response data will be on `data` key of the JSON object.
     - contains an array of event objects  
