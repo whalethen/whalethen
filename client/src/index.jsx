@@ -51,6 +51,7 @@ class App extends React.Component {
 
   onSubmit() {
     this.setState({ timelineId: shortid.generate() }, () => {
+      console.log('hello on submit button');
       const start = moment(this.state.startDate);
       const end = moment(this.state.endDate);
       this.setState({ numberOfDays: end.diff(start, 'days') }, () => {
@@ -79,6 +80,7 @@ class App extends React.Component {
   getTrip() {
     axios.get(`/timeline/${this.state.timelineName}/${this.state.timelineId}`)
       .then(({ data }) => {
+        console.log('data', data);
         this.setState({
           timelineData: data,
           numberOfDays: data.length,
