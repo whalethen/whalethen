@@ -6,6 +6,7 @@ import shortid from 'shortid';
 import Search from './Search';
 import Timeline from './Timeline';
 import TimelineInputBox from './TimelineInputBox';
+import TimelineLookUp from './TimelineLookUp';
 import StartDateBox from './StartDateBox';
 import EndDateBox from './EndDateBox';
 import CreateEventBox from './CreateEventBox';
@@ -29,7 +30,11 @@ class App extends React.Component {
     this.onEnter = this.onEnter.bind(this);
     this.addNewEvent = this.addNewEvent.bind(this);
     this.getTrip = this.getTrip.bind(this);
+    this.handleID = this.handleID.bind(this);
+    this.handleName = this.handleName.bind(this);
+    this.onLookupEnter = this.onLookupEnter.bind(this);
     this.onCreateDaySelect = this.onCreateDaySelect.bind(this);
+    this.onCreateEnter = this.onCreateEnter.bind(this);
     this.handleNewEvent = this.handleNewEvent.bind(this);
     this.handleNewAddress = this.handleNewAddress.bind(this);
     this.createEvent = this.createEvent.bind(this);
@@ -57,14 +62,26 @@ class App extends React.Component {
     }
   }
 
+  onCreateEnter(event) {
+    if (event.key === 'Enter') {
+      this.createEvent();
+    }
+  }
+
   onCreateDaySelect(e) {
     this.setState({
       createEventDay: e.target.value,
     });
   }
 
+  onLookupEnter(event) {
+    if (event.key === 'Enter') {
+      this.getTrip();
+    }
+  }
+
   getTrip() {
-    axios.get(`timeline/${this.state.timelineName}/${this.state.timelineId}`)
+    axios.get(`/timeline/${this.state.timelineName}/${this.state.timelineId}`)
       .then(({ data }) => {
         console.log(data)
         this.setState({
@@ -75,6 +92,18 @@ class App extends React.Component {
         });
       })
       .catch(err => console.error(err));
+  }
+
+  handleID(e) {
+    this.setState({
+      timelineId: e.target.value,
+    });
+  }
+
+  handleName(e) {
+    this.setState({
+      timelineName: e.target.value,
+    });
   }
 
   handleNewEvent(e) {
@@ -114,17 +143,15 @@ class App extends React.Component {
     });
   }
 
-  countDays() {
-    const start = moment(this.state.startDate);
-    const end = moment(this.state.endDate);
-    this.setState({ numberOfDays: end.diff(start, 'days') });
-  }
-
   render() {
     return (
       <div className="App">
+        <h1 className="title">WhaleThen</h1>
         <div className="container timelineParams">
           <div className="title">WhaleThen</div>
+          <div>{this.state.timelineName}</div>
+          <div>{this.state.timelineId}</div>
+
           <TimelineInputBox
             onInput={this.onInputChange}
             onEnter={this.onEnter}
@@ -141,20 +168,34 @@ class App extends React.Component {
             className="scheduleSubmit"
             onClick={() => this.onSubmit()}
           >
-            Make New Schedule
+            New Schedule
           </button>
+          
+          <TimelineLookUp
+            getTrip={this.getTrip}
+            handleID={this.handleID}
+            handleName={this.handleName}
+            onLookupEnter={this.onLookupEnter}
+          />
         </div>
         <CreateEventBox
           timelineName={this.state.timelineName}
+          timelineId={this.state.timelineId}
           addNewEvent={this.addNewEvent}
           numberOfDays={this.state.numberOfDays}
           onCreateDaySelect={this.onCreateDaySelect}
+          onCreateEnter={this.onCreateEnter}
           createEventDay={this.state.createEventDay}
           handleNewEvent={this.handleNewEvent}
           handleNewAddress={this.handleNewAddress}
           createEvent={this.createEvent}
         />
-        <Timeline timelineData={this.state.timelineData} />
+        <TimelineLookUp
+          getTrip={this.getTrip}
+          handleID={this.handleID}
+          handleName={this.handleName}
+        />
+        <Timeline timelineData={this.state.timelineData} timelineId={this.state.timelineId} />
         <Search
           numberOfDays={this.state.numberOfDays}
           addNewEvent={this.addNewEvent}

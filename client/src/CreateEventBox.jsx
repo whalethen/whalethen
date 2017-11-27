@@ -8,6 +8,7 @@ const CreateEventBox = (props) => {
     numberOfDays,
     onCreateDaySelect,
     createEventDay,
+    onCreateEnter,
     handleNewEvent,
     handleNewAddress,
     createEvent,
@@ -19,11 +20,11 @@ const CreateEventBox = (props) => {
   }
 
   return (
-    <div className="container createBox">
+    <div className="container createBox label">
       <h3>{timelineName}</h3>
       <label className="createEvent" htmlFor="createEvent">
         <span>
-          Create Event:
+          {`Create Event:  `}
           <input
             id="createEventName"
             type="text"
@@ -32,15 +33,16 @@ const CreateEventBox = (props) => {
             onChange={handleNewEvent}
           />
         </span>
-
+      
         <span>
-          Create Event Address:
+          {` Create Event Address: `}
           <input
             id="createEventAddress"
             type="text"
             name="createEventAddress"
             placeholder="enter an address"
             onChange={handleNewAddress}
+            onKeyUp={event => onCreateEnter(event)}
           />
         </span>
 
@@ -69,6 +71,7 @@ CreateEventBox.propTypes = {
   numberOfDays: propTypes.number.isRequired,
   onCreateDaySelect: propTypes.func.isRequired,
   createEventDay: propTypes.string.isRequired,
+  onCreateEnter: propTypes.func.isRequired,
   handleNewEvent: propTypes.func.isRequired,
   handleNewAddress: propTypes.func.isRequired,
   createEvent: propTypes.func.isRequired,

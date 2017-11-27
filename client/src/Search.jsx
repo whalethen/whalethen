@@ -19,15 +19,21 @@ class Search extends React.Component {
     this.handleCat = this.handleCat.bind(this);
     this.handleLoc = this.handleLoc.bind(this);
     this.onDaySelect = this.onDaySelect.bind(this);
+    this.onEnter = this.onEnter.bind(this);
   }
   onSubmit() {
     axios.get('/search', { params: { category: this.state.termBar, location: this.state.locationSearch } })
-      .then((response) => {
+      .then(({ data }) => {
         this.setState({
-          searchList: response.data,
+          searchList: data,
         });
       })
       .catch(err => console.error(err));
+  }
+  onEnter(event) {
+    if (event.key === 'Enter') {
+      this.onSubmit();
+    }
   }
   onDaySelect(e) {
     this.setState({
@@ -49,6 +55,7 @@ class Search extends React.Component {
       <div className="container search">
         <SearchBar
           onSubmit={this.onSubmit}
+          onEnter={this.onEnter}
           handleCat={this.handleCat}
           handleLoc={this.handleLoc}
         />
