@@ -8,6 +8,7 @@ const SearchBar = props => (
       type="text"
       placeholder="location"
       onChange={props.handleLoc}
+      onKeyUp={event => props.onEnter(event)}
     />
     <input
       id="category"
