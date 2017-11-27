@@ -1,12 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpack = require('webpack');
 const api = require('./placesApi.js');
 const db = require('../database/');
+const config = require('../webpack.config.js');
 require('dotenv').config();
 
 const app = express();
+const compiler = webpack(config);
 
+app.use(webpackDevMiddleware(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath,
+}));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
