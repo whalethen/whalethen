@@ -72,7 +72,7 @@ Entry:
 ##### Delete Requests
 
 Entry:
-  - route: '/entry/<entryId>'
+  - route: '/entry/:entryId'
 
 ## Requirements
 
