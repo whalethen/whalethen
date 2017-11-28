@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import moment from 'moment';
 import shortid from 'shortid';
@@ -152,7 +151,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="title">WhaleThen</div>
+        <div className="title">Well Hollo</div>
         <div className="container timelineParams">
           <div className="label">{this.state.timelineName}</div>
           <div className="label">{this.state.timelineId}</div>
@@ -202,5 +201,4 @@ class App extends React.Component {
   }
 }
 
-
-ReactDOM.render(<App />, document.getElementById('app'));
+export default App;
