@@ -45,8 +45,8 @@ app.post('/entry', ({ body }, response) => {
     .catch(() => response.sendStatus(409));
 });
 
-app.put('/entry', (request, response) => {
-  db.updateVotes(request.body.timelineId, request.body.day, request.body.eventId, request.body.votes)
+app.put('/entry', ({ body }, response) => {
+  db.updateVotes(body.timelineId, body.day, body.eventId, body.votes)
     .then(() => response.sendStatus(200))
     .tapCatch(err => console.error(err))
     .catch(() => response.sendStatus(409));
