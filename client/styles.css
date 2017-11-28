@@ -37,11 +37,6 @@ body {
   padding: .3em;
 }
 
-.label {
-  font-family: 'Pacifico', cursive;
-  font-size: 1.15em;
-}
-
 .searchComponent {}
 
 .searchList {
@@ -98,7 +93,6 @@ body {
   text-align: center;
   font-size: 45pt;
   font-weight: bold;
-  font-family: 'Sacramento', cursive;
 }
 
 .timelineName {
@@ -174,7 +168,7 @@ input {
   margin: 5px;
 }
 
-button {
+/*button {
   height: 60px;
   width: 80px;
   background-color: rgb(56, 222, 225); /* Green */
@@ -186,4 +180,4 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-}
+}*/
