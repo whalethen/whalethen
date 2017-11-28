@@ -177,9 +177,7 @@ class App extends React.Component {
           </button>
         </div>
         <CreateEventBox
-          timelineName={this.state.timelineName}
           timelineId={this.state.timelineId}
-          addNewEvent={this.addNewEvent}
           numberOfDays={this.state.numberOfDays}
           onCreateDaySelect={this.onCreateDaySelect}
           onCreateEnter={this.onCreateEnter}
