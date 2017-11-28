@@ -152,7 +152,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1 className="title">WhaleThen</h1>
+        <div className="title">WhaleThen</div>
         <div className="container timelineParams">
           <div className="label">{this.state.timelineName}</div>
           <div className="label">{this.state.timelineId}</div>
