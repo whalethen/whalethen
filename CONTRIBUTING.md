@@ -12,6 +12,8 @@
 
 ## Detailed Workflow
 
+All work is to be done on the development branch of the repo. Once changes have been made from your feature branch, make a pull request from your fork into WhaleThen's development branch. After it has been reviewed and approved, it can be merged and commits squashed into the development branch. Master branch is only for production ready code and has a pipeline directly into Heroku for deployment. 
+
 ### Fork the repo
 
 Use github’s interface to make a fork of the repo, then add that repo as an upstream remote:
