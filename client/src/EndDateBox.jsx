@@ -7,7 +7,7 @@ const EndDateBox = ({ onInput, onEnter }) => (
       End Date:
       <input
         id="endDate"
-        type="text"
+        type="date"
         name="endDate"
         onChange={event => onInput(event)}
         placeholder="enter an end date"
