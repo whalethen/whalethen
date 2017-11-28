@@ -4,10 +4,10 @@
 
 ## Team
 
-  - Andy Nguyen
-  - Angie Huang
-  - Jackie Leung
-  - Jenn Shen
+  - [Andy Nguyen](https://github.com/andino93)
+  - [Angie Huang](https://github.com/angelahuang89)
+  - [Jackie Leung](https://github.com/jackieline)
+  - [Jenn Shen](https://github.com/Jshen18)
 
 ## Table of Contents
 
