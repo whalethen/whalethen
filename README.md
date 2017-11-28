@@ -16,10 +16,10 @@
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
     1. [Tasks](https://trello.com/b/MelpBRkI)
+    1. [Google Maps Api](#google-maps-api)
+1. [Environmental Variables](evironmental-variables)
 1. [Roadmap](#roadmap)
 1. [Contributing](#contributing)
-1. [Google Maps Api](#google-maps-api)
-1. [Environmental Variables](evironmental-variables)
 
 ## Usage
 
@@ -121,6 +121,16 @@ Entry:
   - eslint-plugin-react: ^7.4.0,
   - webpack: ^3.8.1,
   - webpack-dev-server: ^2.9.4
+  
+## Google Maps Api
+
+The Google Places API is part of the Google Maps API. You'll first need to get an API key [here](https://developers.google.com/places/web-service/get-api-key). After you receive your API keym you'll need to add it into the `.env` file that is in the root of the App. 
+
+Calls to the Places Api are done from the `placesApi.js` file. Inside, the env file is sourced so that API calls can be authenticated for google searches. 
+NOTE: Places API takes query distances in meters. The default value of our search radius is 32000m or 20 miles. 
+
+## Environmental Variables
+An example `.env` file is found in the root of the directory. Inside, there are the parameters needed for all the environmental variables used in our code. They include the database url, port, and Google Maps api key. Make a local copy of your .env file with by using `cp .env-example .env` and then edit it in your editor of choice to add your own parameters. 
 
 ### Installing Dependencies
 
@@ -139,13 +149,3 @@ View the project roadmap [here](https://docs.google.com/document/d/1dB4A4rv8NQty
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
-
-### Google Maps Api
-
-The Google Places API is part of the Google Maps API. You'll first need to get an API key [here](https://developers.google.com/places/web-service/get-api-key). After you receive your API keym you'll need to add it into the `.env` file that is in the root of the App. 
-
-Calls to the Places Api are done from the `placesApi.js` file. Inside, the env file is sourced so that API calls can be authenticated for google searches. 
-NOTE: Places API takes query distances in meters. The default value of our search radius is 32000m or 20 miles. 
-
-### Environmental Variables
-An example `.env` file is found in the root of the directory. Inside, there are the parameters needed for all the environmental variables used in our code. They include the database url, port, and Google Maps api key. Make a local copy of your .env file with by using `cp .env-example .env` and then edit it in your editor of choice to add your own parameters. 
