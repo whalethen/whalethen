@@ -23,10 +23,7 @@
 
 #### Starting Development Environment
 
-Starting Webpack Server:
-``` sh
-npm run react-dev
-```
+Using the development server will also run and serve webpack. Only one terminal instance is needed. You'll also need to run mongodb server. 
 
 Starting Development Server:
 ``` sh
@@ -68,6 +65,7 @@ Entry:
 
 Entry:
   - route: '/entry'
+  - Data object should contain `timelineId`, `day`, `eventId`, and `votes`
 
 ##### Delete Requests
 
@@ -101,12 +99,14 @@ Entry:
   - request: ^2.83.0,
   - request-promise: ^4.2.2,
   - shortid: ^2.2.8
+  - webpack-dev-middleware: ^1.12.2,
+  - babel-loader: ^7.1.2",
+  - webpack-hot-middleware: ^2.21.0
 
 
 ## Development
 
   - babel-cli: ^6.7.5,
-  - babel-loader: ^7.1.2,
   - babel-preset-es2015: ^6.24.1,
   - babel-preset-react: ^6.24.1,
   - babel-preset-stage-2: ^6.24.1,
