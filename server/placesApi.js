@@ -1,5 +1,4 @@
 const request = require('request-promise');
-// const config = require('../config/config.js');
 const _ = require('lodash');
 require('dotenv').config();
 

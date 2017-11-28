@@ -40,13 +40,9 @@ const updateVotes = (timelineId, day, eventId, votes) => {
     timelineId,
   })
     .then((results) => {
-      const event = results[0].events.id(eventId)
+      const event = results[0].events.id(eventId);
       event.votes = votes;
-      return results[0].saveAsync(((err) => {
-        if (err) {
-          console.error(err);
-        }
-      }));
+      return results[0].saveAsync();
     });
 };
 
@@ -69,8 +65,7 @@ const getTimelineByName = timelineName => Day.findAsync({ timelineName });
 const addEventToDay = (event, timelineId, day) => {
   return Day.findOneAsync({ timelineId, day })
     .tap(model => model.events.push(event))
-    .then(model => model.save())
-    .catch(err => console.error(err));
+    .then(model => model.saveAsync());
 };
 
 const addNewEvent = (event, timelineId, day, timelineName) => {

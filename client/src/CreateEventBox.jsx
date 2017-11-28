@@ -3,11 +3,8 @@ import propTypes from 'prop-types';
 
 const CreateEventBox = (props) => {
   const {
-    timelineName,
-    addNewEvent,
     numberOfDays,
     onCreateDaySelect,
-    createEventDay,
     onCreateEnter,
     handleNewEvent,
     handleNewAddress,
@@ -62,11 +59,8 @@ const CreateEventBox = (props) => {
 };
 
 CreateEventBox.propTypes = {
-  timelineName: propTypes.string.isRequired,
-  addNewEvent: propTypes.func.isRequired,
   numberOfDays: propTypes.number.isRequired,
   onCreateDaySelect: propTypes.func.isRequired,
-  createEventDay: propTypes.string.isRequired,
   onCreateEnter: propTypes.func.isRequired,
   handleNewEvent: propTypes.func.isRequired,
   handleNewAddress: propTypes.func.isRequired,
