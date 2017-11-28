@@ -21,7 +21,6 @@ const CreateEventBox = (props) => {
 
   return (
     <div className="container createBox label">
-      <h3>{timelineName}</h3>
       <label className="createEvent" htmlFor="createEvent">
         <span>
           <input

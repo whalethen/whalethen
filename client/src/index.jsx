@@ -154,8 +154,8 @@ class App extends React.Component {
       <div className="App">
         <h1 className="title">WhaleThen</h1>
         <div className="container timelineParams">
-          <div>{this.state.timelineName}</div>
-          <div>{this.state.timelineId}</div>
+          <div className="label">{this.state.timelineName}</div>
+          <div className="label">{this.state.timelineId}</div>
 
           <TimelineInputBox
             onInput={this.onInputChange}
