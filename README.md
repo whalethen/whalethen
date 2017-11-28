@@ -1,6 +1,6 @@
 # WhaleThen
 
-[[https://github.com/whalethen/whalethen/blob/master/whalethen.gif|alt=whalethen]]
+![alt text](https://github.com/whalethen/whalethen/blob/master/whalethen.gif)
 
 > WhaleThen combines scheduling, trip planning, and group coordination on a single page. Vote, comment, have a whale of a time. Sea you soon!
 
