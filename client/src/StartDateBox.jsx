@@ -7,7 +7,7 @@ const StartDateBox = ({ onInput, onEnter }) => (
     Start Date:
     <input
       id="startDate"
-      type="text"
+      type="date"
       name="startDate"
       onChange={event => onInput(event)}
       placeholder="enter a start date"

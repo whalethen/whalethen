@@ -37,11 +37,6 @@ body {
   padding: .3em;
 }
 
-.label {
-  font-family: 'Pacifico', cursive;
-  font-size: 1.15em;
-}
-
 .searchComponent {}
 
 .searchList {
@@ -78,7 +73,7 @@ body {
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  height: 85vh;
+  height: 75vh;
 }
 
 .startDate {
@@ -96,9 +91,8 @@ body {
   grid-row-start: 1;
   grid-row-end: 2;
   text-align: center;
-  font-size: 32pt;
+  font-size: 45pt;
   font-weight: bold;
-  font-family: 'Sacramento', cursive;
 }
 
 .timelineName {
@@ -163,7 +157,7 @@ input {
 .timeline {
   display: flex;
   grid-area: timeline;
-  height: 85vh;
+  height: 75vh;
   flex: 1;
   overflow: auto;
   font-size: 1.1em;
@@ -174,7 +168,9 @@ input {
   margin: 5px;
 }
 
-button {
+/*button {
+  height: 60px;
+  width: 80px;
   background-color: rgb(56, 222, 225); /* Green */
   border: none;
   color: white;
@@ -184,4 +180,4 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-}
+}*/
