@@ -32,7 +32,7 @@ app.get('/timeline/:timelineName/:timelineId', (request, response) => {
 });
 
 app.post('/timeline', ({ body }, response) => {
-  db.addNewTimeline(body.timelineId, body.numberOfDays, body.timelineName)
+  db.addNewTimeline(body.timelineId, body.numberOfDays)
     .then(() => response.sendStatus(200))
     .tapCatch(err => console.error(err))
     .catch(() => response.sendStatus(409));
@@ -68,7 +68,7 @@ app.get('/search', (request, response) => {
     .catch(() => response.sendStatus(409));
 });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 import moment from 'moment';
 import shortid from 'shortid';
@@ -144,13 +145,11 @@ class App extends React.Component {
 
   render() {
     return (
-    // Provider
-      // Main
       <div className="App">
-        <div className="title">Well Hollo</div>
+        <h1 className="title">WhaleThen</h1>
         <div className="container timelineParams">
-          <div className="label">{this.state.timelineName}</div>
-          <div className="label">{this.state.timelineId}</div>
+          <div>{this.state.timelineName}</div>
+          <div>{this.state.timelineId}</div>
 
           <TimelineInputBox
             onInput={this.onInputChange}
@@ -172,7 +171,9 @@ class App extends React.Component {
           </button>
         </div>
         <CreateEventBox
+          timelineName={this.state.timelineName}
           timelineId={this.state.timelineId}
+          addNewEvent={this.addNewEvent}
           numberOfDays={this.state.numberOfDays}
           onCreateDaySelect={this.onCreateDaySelect}
           onCreateEnter={this.onCreateEnter}
@@ -197,4 +198,5 @@ class App extends React.Component {
   }
 }
 
-export default App;
+
+ReactDOM.render(<App />, document.getElementById('app'));

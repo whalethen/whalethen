@@ -6,7 +6,7 @@ require('dotenv').config();
 Promise.promisifyAll(mongoose);
 Promise.promisifyAll(mongo);
 
-mongoose.connect(process.env.DATABASE, { useMongoClient: true });
+mongoose.connect(process.env.DATABASE || 'mongodb://localhost/whalethen', { useMongoClient: true });
 const db = mongoose.connection;
 
 db.on('error', () => {
@@ -34,17 +34,15 @@ const daySchema = mongoose.Schema({
 const Day = mongoose.model('Day', daySchema);
 const Event = mongoose.model('Event', eventSchema);
 
-const updateVotes = (timelineId, day, eventId, votes) => {
-  return Day.findAsync({
-    day,
-    timelineId,
-  })
-    .then((results) => {
-      const event = results[0].events.id(eventId);
-      event.votes = votes;
-      return results[0].saveAsync();
-    });
-};
+const updateVotes = (timelineId, day, eventId, votes) => Day.findAsync({
+  day,
+  timelineId,
+})
+  .then((results) => {
+    const event = results[0].events.id(eventId);
+    event.votes = votes;
+    return results[0].saveAsync();
+  });
 
 const addNewTimeline = (timelineId, numberOfDays, timelineName) => {
   const timeline = [];
@@ -55,18 +53,14 @@ const addNewTimeline = (timelineId, numberOfDays, timelineName) => {
   return Promise.map(timeline, day => day.saveAsync());
 };
 
-const getTimelineById = (timelineId) => {
-  return Day.findAsync({ timelineId })
-    .then(results => results.sort((a, b) => a.day - b.day));
-};
+const getTimelineById = timelineId => Day.findAsync({ timelineId })
+  .then(results => results.sort((a, b) => a.day - b.day));
 
 const getTimelineByName = timelineName => Day.findAsync({ timelineName });
 
-const addEventToDay = (event, timelineId, day) => {
-  return Day.findOneAsync({ timelineId, day })
-    .tap(model => model.events.push(event))
-    .then(model => model.saveAsync());
-};
+const addEventToDay = (event, timelineId, day) => Day.findOneAsync({ timelineId, day })
+  .tap(model => model.events.push(event))
+  .then(model => model.saveAsync());
 
 const addNewEvent = (event, timelineId, day, timelineName) => {
   const newEvent = new Event(event);
