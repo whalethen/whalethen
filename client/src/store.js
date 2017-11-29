@@ -6,4 +6,25 @@ import { browserHistory } from 'react-router';
 
 import rootReducer from './reducers/index';
 
-const state = 
+const state = {
+  timelineData: [],
+  timelineName: 'testTimeline', // temp until we get some more data built up
+  startDate: '',
+  endDate: '',
+  numberOfDays: 0,
+  timelineId: 'S1nnbsNlG', // temp until we get a way to produce these
+  createEventDay: '',
+  newEvent: '',
+  newEventAddress: '',
+};
+
+const store = createStore(rootReducer, state);
+
+if (module.hot) {
+  module.hot.accept('./reducers/', () => {
+    const nextRootReducer = require('./reducers/index').default;
+    store.replaceReducer(nextRootReducer);
+  });
+}
+
+export default store;
