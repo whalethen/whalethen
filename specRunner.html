@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SpecRunner</title>
+    <!-- library files -->
+    <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/lodash/lodash.js"></script>
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/chai/chai.js"></script>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script>
+      mocha.setup('bdd');
+      window.expect = chai.expect;
+      $(function() {
+        window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
+      });
+    </script>
+    <!-- source files -->
+    <!-- <script src="compiled/index.js"></script>
+    <script src="compiled/App.js"></script>
+    <script src="compiled/CreateEventBox.js"></script>
+    <script src="compiled/Day.js"></script>
+    <script src="compiled/EndDateBox.js"></script>
+    <script src="compiled/Events.js"></script>
+    <script src="compiled/Search.js"></script>
+    <script src="compiled/SearchBar.js"></script>
+    <script src="compiled/SearchEntry.js"></script>
+    <script src="compiled/SearchList.js"></script>
+    <script src="compiled/StartDateBox.js"></script>
+    <script src="compiled/Timeline.js"></script>
+    <script src="compiled/TimelineInputBox.js"></script>
+    <script src="compiled/TimelineLookUp.js"></script> -->
+    <!-- tests -->
+    <script src="client/spec/components/AppSpec.js"></script>
+  </head>
+  <body>
+    <div id="mocha"></div>
+  </body>
+
+</html>
