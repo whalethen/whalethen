@@ -15,11 +15,11 @@ const Main = React.createClass({
 });
 
 export default Main;
-/*
+
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from './actions/actionCreator';
-import Main from './Main';
+// import Main from './Main';
 
 mapStateToProps = (state) => {
   vote: state.vote,
@@ -33,5 +33,3 @@ mapDispatchToProps = (dispatch) => {
 const App = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default App;
-
-*/
