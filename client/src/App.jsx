@@ -9,24 +9,24 @@ import TimelineLookUp from './TimelineLookUp';
 import StartDateBox from './StartDateBox';
 import EndDateBox from './EndDateBox';
 import CreateEventBox from './CreateEventBox';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actionCreators from './actions/actionCreator';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       timelineData: [],
-      timelineName: '', // temp until we get some more data built up
-      startDate: '',
-      endDate: '',
       numberOfDays: 0,
-      timelineId: '', // temp until we get a way to produce these
       createEventDay: '',
       newEvent: '',
       newEventAddress: '',
     };
 
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onEnter = this.onEnter.bind(this);
+    console.log(actionCreators);
+
+    this.onSubmit = this.onSubmit.bind(this);
     this.addNewEvent = this.addNewEvent.bind(this);
     this.getTrip = this.getTrip.bind(this);
     this.handleID = this.handleID.bind(this);
@@ -44,33 +44,30 @@ class App extends React.Component {
     // this.getTrip();
   }
 
-  onInputChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
+  onSubmit(event) {
+    if (event && event.key !== 'Enter') { return; }
+    const {
+      startDate,
+      endDate,
+      timelineName,
+      setId
+    } = this.props;
+    const start = moment(startDate);
+    const end = moment(endDate);
+    const timelineId = shortid.generate();
+    setId(timelineId);
+    
+    this.setState({ numberOfDays: end.diff(start, 'days') }, () => {
+      axios.post('/timeline', {
+        timelineId,
+        timelineName,
+        numberOfDays: this.state.numberOfDays,
+      })
+        .then(() => this.getTrip())
+        .catch(err => console.error('error in submit ', err));
     });
   }
 
-  onSubmit() {
-    this.setState({ timelineId: shortid.generate() }, () => {
-      const start = moment(this.state.startDate);
-      const end = moment(this.state.endDate);
-      this.setState({ numberOfDays: end.diff(start, 'days') }, () => {
-        axios.post('/timeline', {
-          timelineId: this.state.timelineId,
-          timelineName: this.state.timelineName,
-          numberOfDays: this.state.numberOfDays,
-        })
-          .then(() => this.getTrip())
-          .catch(err => console.error('error in submit ', err));
-      });
-    });
-  }
-
-  onEnter(event) {
-    if (event.key === 'Enter') {
-      this.onSubmit();
-    }
-  }
 
   onCreateEnter(event) {
     if (event.key === 'Enter') {
@@ -79,6 +76,9 @@ class App extends React.Component {
   }
 
   onCreateDaySelect(e) {
+
+    // this.props.createEventDay(e.target.value)
+    // ACTION: 'CREATE_EVENT_DAY'
     this.setState({
       createEventDay: e.target.value,
     });
@@ -91,28 +91,28 @@ class App extends React.Component {
   }
 
   getTrip() {
-    axios.get(`/timeline/${this.state.timelineName}/${this.state.timelineId}`)
+    const { timelineId, setId, onInputChange } = this.props;
+
+    axios.get(`/timeline/${timelineId}`)
       .then(({ data }) => {
+        onInputChange('timelineName', data[0].timelineName);
+        setId(data[0].timelineId);
+
         this.setState({
           timelineData: data,
           numberOfDays: data.length,
-          timelineId: data[0].timelineId,
-          timelineName: data[0].timelineName,
         });
       })
       .catch(err => console.error(err));
   }
 
   handleID(e) {
-    this.setState({
-      timelineId: e.target.value,
-    });
+    const { setId } = this.props;
+    setId(e.target.value);
   }
 
   handleName(e) {
-    this.setState({
-      timelineName: e.target.value,
-    });
+    this.props.onInputChange('timelineName', e.target.value);
   }
 
   handleNewEvent(e) {
@@ -128,12 +128,13 @@ class App extends React.Component {
   }
 
   addNewEvent(event, selectedDay) {
+    const { timelineId, timelineName } = this.props;
     const day = Number(selectedDay.slice(4));
     axios.post('/entry', {
       event,
-      timelineId: this.state.timelineId,
+      timelineId,
       day,
-      timelineName: this.state.timelineId,
+      timelineName,
     })
       .then(() => this.getTrip())
       .catch(err => console.error('add event error: ', err));
@@ -149,24 +150,24 @@ class App extends React.Component {
   }
 
   render() {
+    const { timelineName, timelineId } = this.props;
+
     return (
       <div className="App">
         <div className="title">Well Hollo</div>
         <div className="container timelineParams">
-          <div className="label">{this.state.timelineName}</div>
-          <div className="label">{this.state.timelineId}</div>
+          <div className="label">{timelineName}</div>
+          <div className="label">{timelineId}</div>
 
           <TimelineInputBox
-            onInput={this.onInputChange}
-            onEnter={this.onEnter}
+            {...this.props}
+            onSubmit={this.onSubmit}
           />
           <StartDateBox
-            onInput={this.onInputChange}
-            onEnter={this.onEnter}
+            {...this.props}
           />
           <EndDateBox
-            onInput={this.onInputChange}
-            onEnter={this.onEnter}
+            {...this.props}
           />
           <button
             className="scheduleSubmit"
@@ -176,7 +177,7 @@ class App extends React.Component {
           </button>
         </div>
         <CreateEventBox
-          timelineId={this.state.timelineId}
+          timelineId={timelineId}
           numberOfDays={this.state.numberOfDays}
           onCreateDaySelect={this.onCreateDaySelect}
           onCreateEnter={this.onCreateEnter}
@@ -191,7 +192,7 @@ class App extends React.Component {
           handleName={this.handleName}
           onLookupEnter={this.onLookupEnter}
         />
-        <Timeline timelineData={this.state.timelineData} timelineId={this.state.timelineId} />
+        <Timeline timelineData={this.state.timelineData} timelineId={timelineId} />
         <Search
           numberOfDays={this.state.numberOfDays}
           addNewEvent={this.addNewEvent}
@@ -201,4 +202,7 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ appState }) => ({ ...appState });
+const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

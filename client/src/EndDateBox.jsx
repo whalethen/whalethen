@@ -1,17 +1,16 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const EndDateBox = ({ onInput, onEnter }) => (
+const EndDateBox = ({ onInputChange, onEnter }) => (
   <div className="inputBox label">
     <label className="endDate" htmlFor="endDate">
       End Date:
       <input
         id="endDate"
-        type="text"
+        type="date"
         name="endDate"
-        onChange={event => onInput(event)}
+        onChange={({ target }) => onInputChange(target.name, target.value)}
         placeholder="enter an end date"
-        onKeyUp={event => onEnter(event)}
       />
     </label>
   </div>
