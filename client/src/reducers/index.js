@@ -17,6 +17,11 @@ import events from './events';
 
 const appState = (state = {}, action) => {
   switch (action.type) {
+    case 'ON_INPUT_CHANGE':
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
     default:
       return state;
   }

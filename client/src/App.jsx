@@ -18,15 +18,17 @@ class App extends React.Component {
     super();
     this.state = {
       timelineData: [],
-      timelineName: '', // temp until we get some more data built up
-      startDate: '',
-      endDate: '',
+      // timelineName: '', // temp until we get some more data built up
+      // startDate: '',
+      // endDate: '',
       numberOfDays: 0,
       timelineId: '', // temp until we get a way to produce these
       createEventDay: '',
       newEvent: '',
       newEventAddress: '',
     };
+
+    console.log(actionCreators);
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onEnter = this.onEnter.bind(this);
@@ -47,26 +49,33 @@ class App extends React.Component {
     // this.getTrip();
   }
 
-  onInputChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  }
 
-  onSubmit() {
-    this.setState({ timelineId: shortid.generate() }, () => {
-      const start = moment(this.state.startDate);
-      const end = moment(this.state.endDate);
-      this.setState({ numberOfDays: end.diff(start, 'days') }, () => {
-        axios.post('/timeline', {
-          timelineId: this.state.timelineId,
-          timelineName: this.state.timelineName,
-          numberOfDays: this.state.numberOfDays,
-        })
-          .then(() => this.getTrip())
-          .catch(err => console.error('error in submit ', err));
-      });
-    });
+  // ============================================
+  // TimelineInputBox
+  // StartDateBox
+  // EndDateBox
+  // ============================================
+
+  // ACTIONS:
+  // SET_TIMELINE_INPUT
+  // SET_START_DATE
+  // SET_END_DATE
+  // SUBMIT_TIMELINE_INFO
+
+  // this.props.onInputChange
+  // this.props.onEnter
+  // this.props.onSubmit
+
+  // States:
+  // this.state.timelineName
+  // this.state.startDate
+  // this.state.endDate
+
+  onInputChange(event) {
+    this.props.onInputChange(event.target.name, event.target.value);
+    // this.setState({
+    //   [event.target.name]: event.target.value,
+    // });
   }
 
   onEnter(event) {
@@ -75,6 +84,24 @@ class App extends React.Component {
     }
   }
 
+  onSubmit() {
+    this.setState({ timelineId: shortid.generate() }, () => {
+      const start = moment(this.props.startDate);
+      const end = moment(this.props.endDate);
+      this.setState({ numberOfDays: end.diff(start, 'days') }, () => {
+        axios.post('/timeline', {
+          timelineId: this.state.timelineId,
+          timelineName: this.props.timelineName,
+          numberOfDays: this.state.numberOfDays,
+        })
+          .then(() => this.getTrip())
+          .catch(err => console.error('error in submit ', err));
+      });
+    });
+  }
+// ============================================
+
+
   onCreateEnter(event) {
     if (event.key === 'Enter') {
       this.createEvent();
@@ -82,6 +109,9 @@ class App extends React.Component {
   }
 
   onCreateDaySelect(e) {
+
+    // this.props.createEventDay(e.target.value)
+    // ACTION: 'CREATE_EVENT_DAY'
     this.setState({
       createEventDay: e.target.value,
     });
@@ -94,13 +124,14 @@ class App extends React.Component {
   }
 
   getTrip() {
-    axios.get(`/timeline/${this.state.timelineName}/${this.state.timelineId}`)
+    axios.get(`/timeline/${this.props.timelineName}/${this.state.timelineId}`)
       .then(({ data }) => {
+        this.props.onInputChange('timelineName', data[0].timelineName);
         this.setState({
           timelineData: data,
           numberOfDays: data.length,
           timelineId: data[0].timelineId,
-          timelineName: data[0].timelineName,
+        //  timelineName: data[0].timelineName,
         });
       })
       .catch(err => console.error(err));
@@ -113,9 +144,10 @@ class App extends React.Component {
   }
 
   handleName(e) {
-    this.setState({
-      timelineName: e.target.value,
-    });
+    this.props.onInputChange('timelineName', e.target.value);
+    // this.setState({
+    //   timelineName: e.target.value,
+    // });
   }
 
   handleNewEvent(e) {
@@ -156,7 +188,7 @@ class App extends React.Component {
       <div className="App">
         <div className="title">Well Hollo</div>
         <div className="container timelineParams">
-          <div className="label">{this.state.timelineName}</div>
+          <div className="label">{this.props.timelineName}</div>
           <div className="label">{this.state.timelineId}</div>
 
           <TimelineInputBox
@@ -204,12 +236,7 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  vote: state.vote,
-  events: state.events,
-  numberOfDays: state.numberOfDays,
-});
-
-const mapDispatchToProps = (dispatch) => bindActionCreators(actionCreators, dispatch);
+const mapStateToProps = ({ appState }) => ({ ...appState });
+const mapDispatchToProps = dispatch => bindActionCreators(actionCreators, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
