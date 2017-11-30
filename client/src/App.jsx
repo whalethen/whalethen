@@ -18,9 +18,6 @@ class App extends React.Component {
     super();
     this.state = {
       timelineData: [],
-      // timelineName: '', // temp until we get some more data built up
-      // startDate: '',
-      // endDate: '',
       numberOfDays: 0,
       timelineId: '', // temp until we get a way to produce these
       createEventDay: '',
@@ -73,9 +70,6 @@ class App extends React.Component {
 
   onInputChange(event) {
     this.props.onInputChange(event.target.name, event.target.value);
-    // this.setState({
-    //   [event.target.name]: event.target.value,
-    // });
   }
 
   onEnter(event) {
@@ -131,7 +125,6 @@ class App extends React.Component {
           timelineData: data,
           numberOfDays: data.length,
           timelineId: data[0].timelineId,
-        //  timelineName: data[0].timelineName,
         });
       })
       .catch(err => console.error(err));
@@ -145,9 +138,6 @@ class App extends React.Component {
 
   handleName(e) {
     this.props.onInputChange('timelineName', e.target.value);
-    // this.setState({
-    //   timelineName: e.target.value,
-    // });
   }
 
   handleNewEvent(e) {
@@ -192,14 +182,16 @@ class App extends React.Component {
           <div className="label">{this.state.timelineId}</div>
 
           <TimelineInputBox
-            onInput={this.onInputChange}
+            {...this.props}
             onEnter={this.onEnter}
           />
           <StartDateBox
+            {...this.props}
             onInput={this.onInputChange}
             onEnter={this.onEnter}
           />
           <EndDateBox
+            {...this.props}
             onInput={this.onInputChange}
             onEnter={this.onEnter}
           />
