@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 //import { routerReducer } from 'react-router-redux';
 import voting from './voting';
 import events from './events';
+import shortid from 'shortid';
 
 // const state = {
 //   timelineData: [],
@@ -21,6 +22,17 @@ const appState = (state = {}, action) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case 'GENERATE_ID':
+      const id = shortid.generate();
+      return {
+        ...state,
+        timelineId: id,
+      };
+    case 'SET_ID':
+      return {
+        ...state,
+        timelineId: action.id,
       };
     default:
       return state;

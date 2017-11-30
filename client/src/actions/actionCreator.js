@@ -22,3 +22,12 @@ export const onInputChange = (name, value) => ({
   name,
   value,
 });
+
+export const generateId = () => ({
+  type: 'GENERATE_ID',
+});
+
+export const setId = (id) => ({
+  type: 'SET_ID',
+  id,
+});

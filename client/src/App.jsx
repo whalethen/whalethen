@@ -19,7 +19,6 @@ class App extends React.Component {
     this.state = {
       timelineData: [],
       numberOfDays: 0,
-      timelineId: '', // temp until we get a way to produce these
       createEventDay: '',
       newEvent: '',
       newEventAddress: '',
@@ -45,50 +44,26 @@ class App extends React.Component {
     // this.getTrip();
   }
 
-
-  // ============================================
-  // TimelineInputBox
-  // StartDateBox
-  // EndDateBox
-  // ============================================
-
-  // ACTIONS:
-  // SET_TIMELINE_INPUT
-  // SET_START_DATE
-  // SET_END_DATE
-  // SUBMIT_TIMELINE_INFO
-
-  // this.props.onInputChange
-  // this.props.onEnter
-  // this.props.onSubmit
-
-  // States:
-  // this.state.timelineName
-  // this.state.startDate
-  // this.state.endDate
-
   onSubmit(event) {
     if (event && event.key !== 'Enter') {
       return;
     }
-
-    const start = moment(this.props.startDate);
-    const end = moment(this.props.endDate);
-
-
-    this.setState({ timelineId: shortid.generate() }, () => {
-      this.setState({ numberOfDays: end.diff(start, 'days') }, () => {
-        axios.post('/timeline', {
-          timelineId: this.state.timelineId,
-          timelineName: this.props.timelineName,
-          numberOfDays: this.state.numberOfDays,
-        })
-          .then(() => this.getTrip())
-          .catch(err => console.error('error in submit ', err));
-      });
+    const { startDate, endDate, timelineName, setId } = this.props;
+    const start = moment(startDate);
+    const end = moment(endDate);
+    const timelineId = shortid.generate();
+    setId(timelineId);
+    
+    this.setState({ numberOfDays: end.diff(start, 'days') }, () => {
+      axios.post('/timeline', {
+        timelineId,
+        timelineName,
+        numberOfDays: this.state.numberOfDays,
+      })
+        .then(() => this.getTrip())
+        .catch(err => console.error('error in submit ', err));
     });
   }
-// ============================================
 
 
   onCreateEnter(event) {
@@ -113,22 +88,24 @@ class App extends React.Component {
   }
 
   getTrip() {
-    axios.get(`/timeline/${this.props.timelineName}/${this.state.timelineId}`)
+    const { timelineName, timelineId, setId, onInputChange } = this.props;
+
+    axios.get(`/timeline/${timelineName}/${timelineId}`)
       .then(({ data }) => {
-        this.props.onInputChange('timelineName', data[0].timelineName);
+        onInputChange('timelineName', data[0].timelineName);
+        setId(data[0].timelineId);
+
         this.setState({
           timelineData: data,
           numberOfDays: data.length,
-          timelineId: data[0].timelineId,
         });
       })
       .catch(err => console.error(err));
   }
 
   handleID(e) {
-    this.setState({
-      timelineId: e.target.value,
-    });
+    const { setId } = this.props;
+    setId(e.target.value);
   }
 
   handleName(e) {
@@ -148,12 +125,13 @@ class App extends React.Component {
   }
 
   addNewEvent(event, selectedDay) {
+    const { timelineId, timelineName } = this.props;
     const day = Number(selectedDay.slice(4));
     axios.post('/entry', {
       event,
-      timelineId: this.state.timelineId,
+      timelineId,
       day,
-      timelineName: this.state.timelineId,
+      timelineName,
     })
       .then(() => this.getTrip())
       .catch(err => console.error('add event error: ', err));
@@ -169,12 +147,14 @@ class App extends React.Component {
   }
 
   render() {
+    const { timelineName, timelineId } = this.props;
+
     return (
       <div className="App">
         <div className="title">Well Hollo</div>
         <div className="container timelineParams">
-          <div className="label">{this.props.timelineName}</div>
-          <div className="label">{this.state.timelineId}</div>
+          <div className="label">{timelineName}</div>
+          <div className="label">{timelineId}</div>
 
           <TimelineInputBox
             {...this.props}
@@ -194,7 +174,7 @@ class App extends React.Component {
           </button>
         </div>
         <CreateEventBox
-          timelineId={this.state.timelineId}
+          timelineId={timelineId}
           numberOfDays={this.state.numberOfDays}
           onCreateDaySelect={this.onCreateDaySelect}
           onCreateEnter={this.onCreateEnter}
@@ -209,7 +189,7 @@ class App extends React.Component {
           handleName={this.handleName}
           onLookupEnter={this.onLookupEnter}
         />
-        <Timeline timelineData={this.state.timelineData} timelineId={this.state.timelineId} />
+        <Timeline timelineData={this.state.timelineData} timelineId={timelineId} />
         <Search
           numberOfDays={this.state.numberOfDays}
           addNewEvent={this.addNewEvent}
