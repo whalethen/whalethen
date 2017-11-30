@@ -24,7 +24,7 @@ app.use(express.static(`${__dirname}/../client/`));
 
 app.options('/', (request, response) => response.json('GET,POST,PUT,GET'));
 
-app.get('/timeline/:timelineName/:timelineId', ({ params }, response) => {
+app.get('/timeline/:timelineId', ({ params }, response) => {
   db.getTimelineById(params.timelineId)
     .then(timeline => response.json(timeline))
     .tapCatch(err => console.error(err))

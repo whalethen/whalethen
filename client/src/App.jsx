@@ -45,10 +45,13 @@ class App extends React.Component {
   }
 
   onSubmit(event) {
-    if (event && event.key !== 'Enter') {
-      return;
-    }
-    const { startDate, endDate, timelineName, setId } = this.props;
+    if (event && event.key !== 'Enter') { return; }
+    const {
+      startDate,
+      endDate,
+      timelineName,
+      setId
+    } = this.props;
     const start = moment(startDate);
     const end = moment(endDate);
     const timelineId = shortid.generate();
@@ -88,9 +91,9 @@ class App extends React.Component {
   }
 
   getTrip() {
-    const { timelineName, timelineId, setId, onInputChange } = this.props;
+    const { timelineId, setId, onInputChange } = this.props;
 
-    axios.get(`/timeline/${timelineName}/${timelineId}`)
+    axios.get(`/timeline/${timelineId}`)
       .then(({ data }) => {
         onInputChange('timelineName', data[0].timelineName);
         setId(data[0].timelineId);
