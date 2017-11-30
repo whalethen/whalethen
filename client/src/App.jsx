@@ -68,10 +68,6 @@ class App extends React.Component {
   // this.state.startDate
   // this.state.endDate
 
-  onInputChange(event) {
-    this.props.onInputChange(event.target.name, event.target.value);
-  }
-
   onEnter(event) {
     if (event.key === 'Enter') {
       this.onSubmit();
@@ -79,9 +75,11 @@ class App extends React.Component {
   }
 
   onSubmit() {
+    const start = moment(this.props.startDate);
+    const end = moment(this.props.endDate);
+
+
     this.setState({ timelineId: shortid.generate() }, () => {
-      const start = moment(this.props.startDate);
-      const end = moment(this.props.endDate);
       this.setState({ numberOfDays: end.diff(start, 'days') }, () => {
         axios.post('/timeline', {
           timelineId: this.state.timelineId,
@@ -187,12 +185,10 @@ class App extends React.Component {
           />
           <StartDateBox
             {...this.props}
-            onInput={this.onInputChange}
             onEnter={this.onEnter}
           />
           <EndDateBox
             {...this.props}
-            onInput={this.onInputChange}
             onEnter={this.onEnter}
           />
           <button

@@ -9,7 +9,7 @@ const TimelineInputBox = ({ onInputChange, onEnter }) => (
       id="timelineName"
       type="text"
       name="timelineName"
-      onChange={event => onInputChange(event.target.name, event.target.value)}
+      onChange={({ target }) => onInputChange(target.name, target.value)}
       placeholder="enter a name"
       onKeyUp={event => onEnter(event)}
     />
