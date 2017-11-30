@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const TimelineInputBox = ({ onInputChange, onEnter }) => (
+const TimelineInputBox = ({ onInputChange, onSubmit }) => (
   <div className="inputBox label">
     <label className="timelineName" htmlFor="timelineName">
     Timeline Name:
@@ -11,7 +11,7 @@ const TimelineInputBox = ({ onInputChange, onEnter }) => (
       name="timelineName"
       onChange={({ target }) => onInputChange(target.name, target.value)}
       placeholder="enter a name"
-      onKeyUp={event => onEnter(event)}
+      onKeyUp={event => onSubmit(event)}
     />
     </label>
   </div>

@@ -11,7 +11,6 @@ const EndDateBox = ({ onInputChange, onEnter }) => (
         name="endDate"
         onChange={({ target }) => onInputChange(target.name, target.value)}
         placeholder="enter an end date"
-        onKeyUp={event => onEnter(event)}
       />
     </label>
   </div>

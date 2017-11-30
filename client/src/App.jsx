@@ -27,8 +27,7 @@ class App extends React.Component {
 
     console.log(actionCreators);
 
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onEnter = this.onEnter.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
     this.addNewEvent = this.addNewEvent.bind(this);
     this.getTrip = this.getTrip.bind(this);
     this.handleID = this.handleID.bind(this);
@@ -68,13 +67,11 @@ class App extends React.Component {
   // this.state.startDate
   // this.state.endDate
 
-  onEnter(event) {
-    if (event.key === 'Enter') {
-      this.onSubmit();
+  onSubmit(event) {
+    if (event && event.key !== 'Enter') {
+      return;
     }
-  }
 
-  onSubmit() {
     const start = moment(this.props.startDate);
     const end = moment(this.props.endDate);
 
@@ -181,15 +178,13 @@ class App extends React.Component {
 
           <TimelineInputBox
             {...this.props}
-            onEnter={this.onEnter}
+            onSubmit={this.onSubmit}
           />
           <StartDateBox
             {...this.props}
-            onEnter={this.onEnter}
           />
           <EndDateBox
             {...this.props}
-            onEnter={this.onEnter}
           />
           <button
             className="scheduleSubmit"
